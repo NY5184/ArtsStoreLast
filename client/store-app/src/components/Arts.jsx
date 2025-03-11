@@ -1,5 +1,6 @@
 //bs"d
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from 'primereact/button';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
@@ -13,7 +14,7 @@ import Art from './Art';
 export default function Arts() {
     const [arts, setArts] = useState([]);
     const [layout, setLayout] = useState('grid');
-
+    const navigate = useNavigate();
     useEffect(() => {
         getArts();
     }, [])
@@ -79,8 +80,8 @@ export default function Arts() {
                     </div>
                     <div className="flex flex-column align-items-center gap-3 py-5">
                     {/* <Link to={'/Art'}>hjhjhjhjhjhjj</Link> */}
-                        <img className="w-9 shadow-2 border-round" src={`/pictures/Animals/${art.title}.jpg `}  alt={art.title}   onClick={()=>{  navigate(`/Art/${props.id}`,{state:{id:props.id}})}} />
-                        <div className="text-2xl font-bold">{art.name}</div>
+                        <img className="w-9 shadow-2 border-round" src={`/pictures/Animals/${art.title}.jpg `}  alt={art.title}   onClick={()=>{  navigate(`/Art/${art.id}`,{state:{id:art.id}})}} />
+                        <div className="text-2xl font-bold">{art.name}</div>rrs
                         <Rating value={art.rating} readOnly cancel={false}></Rating>
                     </div>
                     <div className="flex align-items-center justify-content-between">
