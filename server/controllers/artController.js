@@ -18,12 +18,12 @@ const getArtByID=async(req,res)=>{
 }
 
 const createNewArt=async(req,res)=>{
-const{title,description,category,artist,price,imageUrl,createdAt,quantity}=req.body
-if(!title||!description||!price||!imageUrl||!category||!artist){
+const{title,description,category,artist,price,createdAt,quantity}=req.body
+if(!title||!description||!price||!category||!artist){
     return res.status(400).json({message:"all fileds is required"})
 }
       
-const newArt={title,description,category,artist,price,imageUrl,createdAt,quantity}
+const newArt={title,description,category,artist,price,createdAt,quantity}
 const art=await Art.create(newArt)
 const arts=await Art.find()
 if(!art){
@@ -34,7 +34,7 @@ return res.json(arts)
 }
 
 const updateArt=async (req,res)=>{
-    const{_id,title,description,category,artist,price,imageUrl,createdAt,quantity}=req.body
+    const{_id,title,description,category,artist,price,createdAt,quantity}=req.body
     if(!_id){
         return res.status(400).json({message:"you must insert _id"})
     }
@@ -53,8 +53,6 @@ const updateArt=async (req,res)=>{
         art.artist=artist
     if(price)
         art.price=price
-    if(imageUrl)
-        art.imageUrl=imageUrl
     if(createdAt)
         art.createdAt=createdAt
     if(quantity)

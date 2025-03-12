@@ -6,7 +6,6 @@ const artSchema=new mongoose.Schema({
     category:{ type: String, required: true },
     artist:{ type: String, required: true },
     price: { type: Number, required: true },
-    imageUrl: { type: String, required: true },
     quantity: { type: Number, default: 1 },
     createdAt: { type: Date, default: Date.now },
     ratingArray:[{userId:{
