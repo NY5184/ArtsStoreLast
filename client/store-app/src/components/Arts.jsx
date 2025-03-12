@@ -80,8 +80,12 @@ export default function Arts() {
                     </div>
                     <div className="flex flex-column align-items-center gap-3 py-5">
                     {/* <Link to={'/Art'}>hjhjhjhjhjhjj</Link> */}
-                        <img className="w-9 shadow-2 border-round" src={`/pictures/Animals/${art.title}.jpg `}  alt={art.title}   onClick={()=>{  navigate(`/Art/${art.id}`,{state:{id:art.id}})}} />
-                        <div className="text-2xl font-bold">{art.name}</div>rrs
+                    <img
+                    src={`/images/${art.title}.jpg`} // תמונה לפי title במקום name
+                    alt={art.title}
+                    className="w-full border-round"
+                    style={{ height: "700px", objectFit: "cover" }}
+                />
                         <Rating value={art.rating} readOnly cancel={false}></Rating>
                     </div>
                     <div className="flex align-items-center justify-content-between">

@@ -73,7 +73,7 @@ export default function Manager() {
                     src={`/images/${art.title}.jpg`} // תמונה לפי title במקום name
                     alt={art.title}
                     className="w-full border-round"
-                    style={{ height: "200px", objectFit: "cover" }}
+                    style={{ height: "700px", objectFit: "cover" }}
                 />
                 <div className="text-2xl font-bold">{art.title}</div>
                 <div className="text-lg">{art.category}</div>
@@ -100,6 +100,9 @@ export default function Manager() {
                     <InputText placeholder="Art Title" value={newArt.title} onChange={(e) => setNewArt({ ...newArt, title: e.target.value })} />
                     <InputText placeholder="Category" value={newArt.category} onChange={(e) => setNewArt({ ...newArt, category: e.target.value })} />
                     <InputText placeholder="Price" value={newArt.price} onChange={(e) => setNewArt({ ...newArt, price: e.target.value })} />
+                    <InputText placeholder="Artist" value={newArt.artist} onChange={(e) => setNewArt({ ...newArt, artist: e.target.value })} />
+                    <InputText placeholder="Description" value={newArt.description} onChange={(e) => setNewArt({ ...newArt, description: e.target.value })} />
+                    <InputText placeholder="Quantity" value={newArt.quantity} onChange={(e) => setNewArt({ ...newArt, quantity: e.target.value })} />
                     <Rating value={newArt.rating} onChange={(e) => setNewArt({ ...newArt, rating: e.value })} />
                     <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
                 </div>
