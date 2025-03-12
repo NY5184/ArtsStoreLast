@@ -18,7 +18,16 @@ const Nav = () => {
             command: () => {
                 navigate('./arts')
             }
-        }]
+        },
+        {
+            label: 'Manger',
+            icon: 'pi pi-shopping-cart',
+            command: () => {
+                navigate('./manger')}
+        }
+    
+        
+    ]
 
     return (
     <div>
