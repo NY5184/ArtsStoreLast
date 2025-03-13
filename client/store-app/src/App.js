@@ -7,7 +7,7 @@ import 'primeicons/primeicons.css';
 import Art  from './components/Art'
 import Arts from './components/Arts'
 import Manger from './components/Manger'
-import Header from './components/Header';
+
 
 // import {BrowserRouter,Routes,Route} from'react-router-dom'
 

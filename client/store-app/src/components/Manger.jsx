@@ -5,7 +5,7 @@ import { DataView } from "primereact/dataview";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { Rating } from "primereact/rating";
-import Header from "./Header";
+
 import axios from "axios";
 
 export default function Manager() {

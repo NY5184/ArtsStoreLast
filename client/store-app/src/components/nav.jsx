@@ -8,7 +8,7 @@ const Nav = () => {
     {
         icon:<img
         src="/images/logo.webp" alt="Logo" className="shop-logo" // תמונה לפי title במקום name
-        style={{ height: "50px", width: "50px" ,borderRadius: "30px"}}
+        style={{ height: "80px", width: "80px" ,borderRadius: "40px"}}
     />
     },
         {
