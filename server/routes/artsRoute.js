@@ -8,7 +8,7 @@ const createNewOrder=require("../controllers/orderController")
 router.get("/",artController.getAllArts)
 router.get("/:id",artController.getArtByID)
 router.post("/",artController.createNewArt)
-router.put("/",artController.updateArt)
+router.put("/:id",artController.updateArt)
 router.delete("/:id",artController.deleteArt)
 router.put("/updateRate",artController.updateRating)
 

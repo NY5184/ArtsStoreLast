@@ -7,6 +7,7 @@ import 'primeicons/primeicons.css';
 import Art  from './components/Art'
 import Arts from './components/Arts'
 import Manger from './components/Manger'
+import Header from './components/Header';
 
 // import {BrowserRouter,Routes,Route} from'react-router-dom'
 
@@ -19,6 +20,7 @@ import Nav from './components/nav'
 
 import './index.css';
 import './flags.css';        
+
 const LazyArt=React.lazy(()=>{import("./components/Art")})
 const LazyArts=React.lazy(()=>{import("./components/Arts")})
 const LazyManger=React.lazy(()=>{import("./components/Manger")})
@@ -36,6 +38,7 @@ function App() {
       <Route path='/' element={<Art></Art> } />
       <Route path='/arts' element={<Arts></Arts> } />
       <Route path='/manger' element={<Manger></Manger> } />
+    
 
       </Routes>
 

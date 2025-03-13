@@ -1,0 +1,7 @@
+.art-image {
+    width: 100%; /* התאמה מלאה לרוחב הקונטיינר */
+    max-height: 400px; /* גובה אחיד */
+    object-fit: contain; /* מונע חיתוך ושומר על הפרופורציות */
+    display: block;
+    margin: auto;
+}

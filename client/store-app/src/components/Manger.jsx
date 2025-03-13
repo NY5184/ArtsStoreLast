@@ -5,6 +5,7 @@ import { DataView } from "primereact/dataview";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { Rating } from "primereact/rating";
+import Header from "./Header";
 import axios from "axios";
 
 export default function Manager() {
@@ -47,6 +48,7 @@ export default function Manager() {
     };
 
     const updateArt = async () => {
+        
         try {
             await axios.put(`http://localhost:7020/art/${currentArt._id}`, currentArt);
             getArts();
@@ -73,7 +75,7 @@ export default function Manager() {
                     src={`/images/${art.title}.jpg`} // תמונה לפי title במקום name
                     alt={art.title}
                     className="w-full border-round"
-                    style={{ height: "700px", objectFit: "cover" }}
+                    style={{ height: "500px", width: "20px" }}
                 />
                 <div className="text-2xl font-bold">{art.title}</div>
                 <div className="text-lg">{art.category}</div>
@@ -91,9 +93,11 @@ export default function Manager() {
 
     return (
         <div className="card">
+          
             <Button label="Add New Art" icon="pi pi-plus" className="p-button-success mb-3" onClick={() => setVisibleAdd(true)} />
+          
             <DataView value={arts} layout={layout} itemTemplate={gridItem} />
-
+         
             {/* Add Art Dialog */}
             <Dialog header="Add New Art" visible={visibleAdd} onHide={() => setVisibleAdd(false)}>
                 <div className="p-fluid">
@@ -103,7 +107,6 @@ export default function Manager() {
                     <InputText placeholder="Artist" value={newArt.artist} onChange={(e) => setNewArt({ ...newArt, artist: e.target.value })} />
                     <InputText placeholder="Description" value={newArt.description} onChange={(e) => setNewArt({ ...newArt, description: e.target.value })} />
                     <InputText placeholder="Quantity" value={newArt.quantity} onChange={(e) => setNewArt({ ...newArt, quantity: e.target.value })} />
-                    <Rating value={newArt.rating} onChange={(e) => setNewArt({ ...newArt, rating: e.value })} />
                     <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
                 </div>
             </Dialog>
@@ -115,7 +118,12 @@ export default function Manager() {
                         <InputText value={currentArt.title} onChange={(e) => setCurrentArt({ ...currentArt, title: e.target.value })} />
                         <InputText value={currentArt.category} onChange={(e) => setCurrentArt({ ...currentArt, category: e.target.value })} />
                         <InputText value={currentArt.price} onChange={(e) => setCurrentArt({ ...currentArt, price: e.target.value })} />
-                        <Rating value={currentArt.rating} onChange={(e) => setCurrentArt({ ...currentArt, rating: e.value })} />
+                        <InputText value={currentArt.artist} onChange={(e) => setCurrentArt({ ...currentArt, artist: e.target.value })} />
+                        <InputText value={currentArt.description} onChange={(e) => setCurrentArt({ ...currentArt, description: e.target.value })} />
+                        <InputText value={currentArt.quantity} onChange={(e) => setCurrentArt({ ...currentArt, quantity: e.target.value })} />
+                        <InputText value={currentArt.createdAt} onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })} />
+                       
+
                         <Button label="Update" icon="pi pi-refresh" className="p-button-warning mt-2" onClick={updateArt} />
                     </div>
                 )}

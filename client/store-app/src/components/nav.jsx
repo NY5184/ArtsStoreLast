@@ -5,6 +5,12 @@ const Nav = () => {
     const navigate = useNavigate();
 
     const items = [
+    {
+        icon:<img
+        src="/images/logo.webp" alt="Logo" className="shop-logo" // תמונה לפי title במקום name
+        style={{ height: "50px", width: "50px" ,borderRadius: "30px"}}
+    />
+    },
         {
             label: 'Art',
             icon: 'pi pi-home',
