@@ -11,16 +11,10 @@ const Nav = () => {
         style={{ height: "80px", width: "80px" ,borderRadius: "40px"}}
     />
     },
-        {
-            label: 'Art',
-            icon: 'pi pi-home',
-            command: () => {
-
-            }
-        },
+    
         {
             label: 'Arts',
-            icon: 'pi pi-star',
+            icon: 'pi pi-home',
             command: () => {
                 navigate('./arts')
             }

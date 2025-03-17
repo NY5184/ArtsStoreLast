@@ -34,11 +34,12 @@ return res.json(arts)
 }
 
 const updateArt=async (req,res)=>{
-    const{_id,title,description,category,artist,price,createdAt,quantity}=req.body
-    if(!_id){
-        return res.status(400).json({message:"you must insert _id"})
+    const {id}=req.params
+    const{title,description,category,artist,price,createdAt,quantity}=req.body
+    if(!id){
+        return res.status(400).json({message:"not found id"})
     }
-    const art=await Art.findById(_id)
+    const art=await Art.findById(id)
     if(!art){
         return res.status(400).json({message:"art didn't found"})
     }
