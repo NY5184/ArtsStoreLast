@@ -10,25 +10,21 @@ import { Tag } from 'primereact/tag';
 import { classNames } from 'primereact/utils';
 import axios from 'axios'
 import {Routes,Route,Link}from'react-router';
-
+import {
+    useGetArtsQuery,
+    useCreateArtMutation,
+    useUpdateArtMutation,
+    useDeleteArtMutation,
+  } from "../redux/artApi";
 import Art from './Art';
 export default function Arts() {
-    const [arts, setArts] = useState([]);
+     const { data: arts = [], refetch } = useGetArtsQuery(undefined, {
+       refetchOnMountOrArgChange: false,
+     });
     const [layout, setLayout] = useState('grid');
     const navigate = useNavigate();
-    useEffect(() => {
-        getArts();
-    }, [])
-    const getArts = async () => {
-        try {
-            const res = await axios.get('http://localhost:7020/art')
-            if (res.status === 200) {
-                setArts(res.data)
-            }
-        } catch (e) {
-            console.error("Error fetching arts:", e);
-        }
-    };
+ 
+    
 
 
 
@@ -42,13 +38,12 @@ export default function Arts() {
             <div className="col-12" key={art.id}>
  
             <Routes><Route path='/Art' element={<Art />}></Route></Routes>
-            <Link to={'/Art'}>hjhjhjhjhjhjj</Link>
                 <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
                      <Link to={'/Art'}> <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`/pictures/Animals/${art.title}.jpg `} alt={art.title} /></Link>
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900">{art.name}</div>
-                            <Rating value={art.rating} readOnly cancel={false}></Rating>
+                            <Rating value={art.rating} ></Rating>
                             <div className="flex align-items-center gap-3">
                                 <span className="flex align-items-center gap-2">
                                     <i className="pi pi-tag"></i>
@@ -87,7 +82,7 @@ export default function Arts() {
                     className="w-full border-round"
                     style={{ height: "700px", objectFit: "cover" }}
                 />
-                        <Rating value={art.rating} readOnly cancel={false}></Rating>
+                        <Rating value={art.rating}  ></Rating>
                     </div>
                     <div className="flex align-items-center justify-content-between">
                         <span className="text-2xl font-semibold">${art.price}</span>
