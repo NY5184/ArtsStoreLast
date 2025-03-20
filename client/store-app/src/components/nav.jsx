@@ -12,19 +12,28 @@ const Nav = () => {
     />
     },
     
-        {
+    {
             label: 'Arts',
             icon: 'pi pi-home',
             command: () => {
                 navigate('./arts')
             }
         },
+       
         {
             label: 'Manger',
             icon: 'pi pi-shopping-cart',
             command: () => {
                 navigate('./manger')}
-        }
+        },
+        {
+            label: 'DigitalArt',
+            icon: 'pi pi-shopping-cart',
+            command: () => {
+                navigate('./DigitalArt')}
+        },
+    
+        
     
         
     ]

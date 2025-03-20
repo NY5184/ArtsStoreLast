@@ -80,7 +80,7 @@ export default function Arts() {
                     src={`/images/${art.title}.jpg`} // תמונה לפי title במקום name
                     alt={art.title}
                     className="w-full border-round"
-                    style={{ height: "700px", objectFit: "cover" }}
+                    style={{ height: "400px", objectFit: "cover" }}
                 />
                         <Rating value={art.rating}  ></Rating>
                     </div>

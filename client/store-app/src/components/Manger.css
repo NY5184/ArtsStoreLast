@@ -1,7 +1,13 @@
-.art-image {
-    width: 100%; /* התאמה מלאה לרוחב הקונטיינר */
-    max-height: 400px; /* גובה אחיד */
-    object-fit: contain; /* מונע חיתוך ושומר על הפרופורציות */
-    display: block;
-    margin: auto;
-}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .art-image {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  

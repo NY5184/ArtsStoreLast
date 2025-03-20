@@ -57,7 +57,7 @@ const Manager = () => {
           src={`/images/${art.title}.jpg`}
           alt={art.title}
           className="w-full border-round"
-          style={{ height: "200px", width: "100%" }}
+          style={{ height: "400px", width: "20%" }}
         />
         <div className="text-2xl font-bold">{art.title}</div>
         <div className="text-lg">Category: {art.category}</div>
