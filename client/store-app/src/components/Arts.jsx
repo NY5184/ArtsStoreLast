@@ -16,7 +16,14 @@ import {
     useUpdateArtMutation,
     useDeleteArtMutation,
   } from "../redux/artApi";
+
+  import { IconField } from 'primereact/iconfield';
+  import { InputIcon } from 'primereact/inputicon';
+ import { InputText } from 'primereact/inputtext';
+          
 import Art from './Art';
+
+         
 export default function Arts() {
      const { data: arts = [], refetch } = useGetArtsQuery(undefined, {
        refetchOnMountOrArgChange: false,
@@ -39,7 +46,7 @@ export default function Arts() {
  
             <Routes><Route path='/Art' element={<Art />}></Route></Routes>
                 <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
-                     <Link to={'/Art'}> <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`/pictures/Animals/${art.title}.jpg `} alt={art.title} /></Link>
+                   
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900">{art.name}</div>
@@ -64,7 +71,9 @@ export default function Arts() {
 
     const gridItem = (art) => {
         return (
+            
             <div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2" key={art.id}>
+                
                          <Routes><Route path='/Art' element={<Art />}></Route></Routes>
                 <div className="p-4 border-1 surface-border surface-card border-round">
                     <div className="flex flex-wrap align-items-center justify-content-between gap-2">
@@ -83,6 +92,7 @@ export default function Arts() {
                     style={{ height: "400px", objectFit: "cover" }}
                 />
                         <Rating value={art.rating}  ></Rating>
+                        <div className="text-2xl font-bold text-900">{art.title}</div>
                     </div>
                     <div className="flex align-items-center justify-content-between">
                         <span className="text-2xl font-semibold">${art.price}</span>

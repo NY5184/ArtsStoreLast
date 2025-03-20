@@ -20,17 +20,18 @@ const Nav = () => {
             }
         },
        
-        {
-            label: 'Manger',
-            icon: 'pi pi-shopping-cart',
-            command: () => {
-                navigate('./manger')}
-        },
+        
         {
             label: 'DigitalArt',
             icon: 'pi pi-shopping-cart',
             command: () => {
                 navigate('./DigitalArt')}
+        },
+        {
+            label: 'Manger',
+            icon: 'pi pi-shopping-cart',
+            command: () => {
+                navigate('./manger')}
         },
     
         
