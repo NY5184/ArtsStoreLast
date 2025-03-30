@@ -108,6 +108,20 @@ const arts=await Art.find().lean()
 return res.json(arts)
 
 }
+const getAverageRating=async(req,res)=>{
+    const {id}=req.params
+    const art=await Art.findById(id)
+    if(!art){
+        return res.status(400).json({message:"Art didn't found"})}
+    
+    let sum=0
+    art.ratingArray.map(n=>{
+        sum+=n.rate
+    })
+    art.mean=sum/art.ratingArray.length
+    await art.save()
+    return res.json(art.mean)
+}
 
-module.exports={getAllArts,getArtByID,updateRating,deleteArt,updateArt,createNewArt}
+module.exports={getAllArts,getArtByID,updateRating,deleteArt,updateArt,createNewArt,getAverageRating}
 

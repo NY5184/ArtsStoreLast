@@ -16,6 +16,7 @@ const artSchema=new mongoose.Schema({
                         min:1,
                         max:5
                     }}],
+    
     mean:{type:Number,default:0}
   }
 )

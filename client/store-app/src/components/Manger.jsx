@@ -66,6 +66,7 @@ const Manager = () => {
         <div className="text-lg font-bold">Price: ${art.price}</div>
         <div className="text-sm">Quantity: {art.quantity}</div>
         <Rating value={art.rating} readOnly cancel={false} />
+        
         <div className="flex justify-content-between mt-3">
           <Button
             icon="pi pi-pencil"

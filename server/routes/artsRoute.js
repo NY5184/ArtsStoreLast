@@ -11,6 +11,7 @@ router.post("/",artController.createNewArt)
 router.put("/:id",artController.updateArt)
 router.delete("/:id",artController.deleteArt)
 router.put("/updateRate",artController.updateRating)
+router.get("/getAverAgeRate/:id",artController.getAverageRating)
 
 module.exports=router
 

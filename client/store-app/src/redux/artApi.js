@@ -30,6 +30,12 @@ export const artApi = createApi({
         method: "DELETE",
       }),
     }),
+    getAverageRating: builder.query({
+      query: (id) => `/getAverAgeRate/${id}`, // Matches the backend route
+    }),
+   
+  
+    
   }),
 });
 
@@ -39,4 +45,5 @@ export const {
   useCreateArtMutation,
   useUpdateArtMutation,
   useDeleteArtMutation,
+  useGetAverageRatingQuery,
 } = artApi;
