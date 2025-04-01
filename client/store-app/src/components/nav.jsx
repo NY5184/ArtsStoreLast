@@ -7,7 +7,7 @@ const Nav = () => {
     const items = [
     {
         icon:<img
-        src="/images/logo.webp" alt="Logo" className="shop-logo" // תמונה לפי title במקום name
+        src="/images/logo3.webp" alt="logo3" className="shop-logo3" // תמונה לפי title במקום name
         style={{ height: "80px", width: "80px" ,borderRadius: "40px"}}
     />
     },
