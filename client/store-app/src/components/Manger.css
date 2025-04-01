@@ -147,6 +147,20 @@ body {
       flex: 1 1 calc(33.33% - 20px); /* 3 cards per row on medium screens */
     }
   }
+  .p-button-success {
+    background-color: #eee1e7; /* Pink background */
+    border-color: #f9e2ee; /* Pink border */
+    color: rgb(8, 6, 6); /* White text */
+  }
+  
+  .p-button-success:hover {
+    background-color: #f4c0da; /* Lighter pink on hover */
+    border-color: #f9d3e7;
+  }
+  .p-button-success:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none;
+  }
   
   @media (max-width: 768px) {
     .art-card {
