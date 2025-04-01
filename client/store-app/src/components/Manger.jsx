@@ -5,7 +5,7 @@ import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { Rating } from "primereact/rating";
 import { Dropdown } from "primereact/dropdown";
-
+import "./Manger.css";
 import {
   useGetArtsQuery,
   useCreateArtMutation,
@@ -75,24 +75,25 @@ const Manager =()=> {
     setVisibleDelete(false);
   };
 
+
   const gridItem = (art) => (
     <div className="art-card" key={art._id}>
-      <div className="art-image-wrapper">
-        <img
-          src={`/images/${art.title}.jpg`}
-          alt={art.title}
-          className="art-image"
-          style={{ width: "20%" }}
-        />
-        <div className="text-2xl font-bold">{art.title}</div>
-        <div className="art-category">Category: {art.category}</div>
+      <div className="art-card-content">
+        <div className="art-image-wrapper">
+          <img
+            src={`/images/${art.title}.jpg`}
+            alt={art.title}
+            className="art-image"
+          />
+        </div>
+        <div className="text-2xl">{art.title}</div>
+        <div className="art-category">{art.category}</div>
         <div className="text-sm">Artist: {art.artist}</div>
-        <div className="text-sm">Description: {art.description}</div>
-        <div className="text-lg font-bold">Price: ${art.price}</div>
-        <div className="text-sm">Quantity: {art.quantity}</div>
-        <Rating value={art.mean} readOnly cancel={false} />
-        
-        <div className="flex justify-content-between mt-3">
+        <div className="text-lg">Price: ${art.price}</div>
+        <div className="rating">
+          <Rating value={art.mean} readOnly cancel={false} />
+        </div>
+        <div className="flex">
           <Button
             icon="pi pi-pencil"
             className="p-button-sm p-button-warning"
