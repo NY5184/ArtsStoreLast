@@ -151,7 +151,7 @@ const Manager =()=> {
       />
 
       <DataView value={sortedArts} itemTemplate={gridItem} header={header()}/>
-{/* 
+{
       <Dialog header="Add New Art" visible={visibleAdd} onHide={() => setVisibleAdd(false)}>
         <div className="p-fluid">
           <InputText placeholder="Art Title" value={newArt.title} onChange={(e) => setNewArt({ ...newArt, title: e.target.value })} />
@@ -163,8 +163,8 @@ const Manager =()=> {
 
           <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
         </div>
-      </Dialog>
-
+      </Dialog> }
+{/* 
       <Dialog header="Edit Art" visible={visibleEdit} onHide={() => setVisibleEdit(false)}>
   {currentArt && (
     <div className="p-fluid">
@@ -232,12 +232,12 @@ const Manager =()=> {
       />
     </div>
   )}
-</Dialog> */}
+</Dialog>  */}
 <Dialog
   header="Edit Art"
   visible={visibleEdit}
   onHide={() => setVisibleEdit(false)}
-  className="edit-dialog"
+  className="edit-dialog" // Add this class name
 >
   {currentArt && (
     <div className="p-dialog-content">
@@ -247,7 +247,6 @@ const Manager =()=> {
           id="title"
           value={currentArt.title}
           onChange={(e) => setCurrentArt({ ...currentArt, title: e.target.value })}
-          placeholder="Enter the title"
         />
       </div>
       <div className="field">
@@ -256,7 +255,6 @@ const Manager =()=> {
           id="category"
           value={currentArt.category}
           onChange={(e) => setCurrentArt({ ...currentArt, category: e.target.value })}
-          placeholder="Enter the category"
         />
       </div>
       <div className="field">
@@ -265,7 +263,6 @@ const Manager =()=> {
           id="price"
           value={currentArt.price}
           onChange={(e) => setCurrentArt({ ...currentArt, price: e.target.value })}
-          placeholder="Enter the price"
         />
       </div>
       <div className="field">
@@ -274,7 +271,6 @@ const Manager =()=> {
           id="artist"
           value={currentArt.artist}
           onChange={(e) => setCurrentArt({ ...currentArt, artist: e.target.value })}
-          placeholder="Enter the artist's name"
         />
       </div>
       <div className="field">
@@ -283,7 +279,6 @@ const Manager =()=> {
           id="description"
           value={currentArt.description}
           onChange={(e) => setCurrentArt({ ...currentArt, description: e.target.value })}
-          placeholder="Enter a description"
         />
       </div>
       <div className="field">
@@ -292,7 +287,6 @@ const Manager =()=> {
           id="quantity"
           value={currentArt.quantity}
           onChange={(e) => setCurrentArt({ ...currentArt, quantity: e.target.value })}
-          placeholder="Enter the quantity"
         />
       </div>
       <div className="field">
@@ -301,7 +295,6 @@ const Manager =()=> {
           id="createdAt"
           value={currentArt.createdAt}
           onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })}
-          placeholder="Enter the creation date"
         />
       </div>
       <div className="dialog-footer">
@@ -321,6 +314,7 @@ const Manager =()=> {
     </div>
   )}
 </Dialog>
+
       <Dialog header="Delete Art" visible={visibleDelete} onHide={() => setVisibleDelete(false)}>
         <p>Are you sure you want to delete "{currentArt?.title}"?</p>
         <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={removeArt} />

@@ -242,7 +242,7 @@ body {
 }
 
 .p-dialog.edit-dialog .field input:focus {
-  border-color: #ff9800; /* Orange border on focus */
+  border-color: #9f97f4; /* Orange border on focus */
   outline: none; /* Remove default outline */
   box-shadow: 0 0 5px rgba(255, 152, 0, 0.5); /* Add a subtle focus shadow */
 }
