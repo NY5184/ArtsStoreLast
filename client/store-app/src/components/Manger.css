@@ -128,7 +128,20 @@ body {
     align-items: center;
     margin-top: 10px;
   }
-  
+  .field label {
+    display: block; /* Ensure the label is above the input field */
+    font-weight: bold; /* Make the text bold */
+    color: #000; /* Set the text color to black */
+    margin-bottom: 0.5rem; /* Add spacing between the label and the input */
+    font-size: 1rem; /* Adjust the font size for better readability */
+  }
+  .field label {
+    display: block; /* Ensure the label is above the input field */
+    font-weight: bold; /* Make the text bold */
+    color: #000; /* Set the text color to black */
+    margin-bottom: 0.5rem; /* Add spacing between the label and the input */
+    font-size: 1rem; /* Adjust the font size for better readability */
+  }
   /* Button styling */
   .p-button-sm {
     padding: 5px 10px;
@@ -183,6 +196,83 @@ body {
   display: flex;
   justify-content: center; /* Center the footer buttons */
   gap: 10px; /* Add spacing between buttons */
+}
+/* Custom styling for the Edit Art dialog */
+.p-dialog.edit-dialog {
+  background-color: #fff4e6; /* Light orange background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for the dialog */
+  max-width: 600px; /* Limit the maximum width */
+  margin: 0 auto; /* Center the dialog horizontally */
+  padding: 20px; /* Add padding inside the dialog */
+}
+
+.p-dialog.edit-dialog .p-dialog-header {
+  text-align: center; /* Center the header text */
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Darker text for the header */
+  margin-bottom: 20px; /* Add spacing below the header */
+}
+
+.p-dialog.edit-dialog .p-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Add spacing between input fields */
+}
+
+.p-dialog.edit-dialog .field {
+  margin-bottom: 1rem; /* Add spacing between fields */
+}
+
+.p-dialog.edit-dialog .field label {
+  display: block; /* Ensure the label is above the input field */
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Darker text color for better readability */
+  margin-bottom: 0.5rem; /* Add spacing between the label and the input */
+  font-size: 1rem; /* Adjust the font size for readability */
+}
+
+.p-dialog.edit-dialog .field input {
+  width: 100%; /* Make the input take the full width of the container */
+  padding: 0.5rem; /* Add padding inside the input */
+  border: 1px solid #ccc; /* Add a light border */
+  border-radius: 5px; /* Rounded corners for the input */
+  font-size: 1rem; /* Adjust font size for readability */
+}
+
+.p-dialog.edit-dialog .field input:focus {
+  border-color: #ff9800; /* Orange border on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.5); /* Add a subtle focus shadow */
+}
+
+.p-dialog.edit-dialog .dialog-footer {
+  display: flex;
+  justify-content: center; /* Center the footer buttons */
+  gap: 1rem; /* Add spacing between buttons */
+}
+
+.p-dialog.edit-dialog .p-button-warning {
+  background-color: #f77db4; /* Orange background for the update button */
+  border-color: #f9a6d2;
+  color: white;
+}
+
+.p-dialog.edit-dialog .p-button-warning:hover {
+  background-color: #fb96e2; /* Lighter orange on hover */
+  border-color: #f57ed3;
+}
+
+.p-dialog.edit-dialog .p-button-secondary {
+  background-color: #e6e4e5; /* Light gray background for the cancel button */
+  border-color: #edebec;
+  color: #333;
+}
+
+.p-dialog.edit-dialog .p-button-secondary:hover {
+  background-color: #fcb1f0; /* Darker gray on hover */
+  border-color: #d6d6d6;
 }
 /* Buttons container */
 .flex {
