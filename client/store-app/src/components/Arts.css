@@ -1,6 +1,6 @@
  body { margin: 0; 
   font-family: Arial, sans-serif; 
-  background-color: #f9e1e1; 
+  background-color: #f6eeee; 
   color: #333; }
  .arts-section 
  { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;  }

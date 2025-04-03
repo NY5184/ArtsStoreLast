@@ -1,6 +1,6 @@
-/* General body styling */
+General body styling
 body {
-    background-color: #f5f5f5; /* Light gray background */
+    background-color: #fdfcfc; /* Light gray background */
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -9,7 +9,7 @@ body {
   /* Container for the entire manager section */
   .arts-container {
     padding: 20px;
-    background-color: #ffffff; /* White background for the container */
+    background-color: #fcf3f3; /* White background for the container */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
   }
@@ -27,7 +27,7 @@ body {
     width: 25%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #e7e4e4;
     border-radius: 5px;
     transition: all 0.3s ease;
   }
@@ -50,8 +50,8 @@ body {
     margin: 10px;
     box-sizing: border-box;
     max-width: 300px;
-    background: #f9f9f9; /* Light gray background for the card */
-    border: 1px solid #ddd;
+    background: #fcf4f4; /* Light gray background for the card */
+    border: 1px solid #f7e2e2;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
@@ -154,14 +154,44 @@ body {
   }
   
   .p-button-success:hover {
-    background-color: #f4c0da; /* Lighter pink on hover */
+    background-color: #f6c9e0; /* Lighter pink on hover */
     border-color: #f9d3e7;
   }
   .p-button-success:focus {
-    border-color: #007bff; /* Blue border on focus */
-    outline: none;
+    background-color: #eee1e7; /* Keep the pink background */
+    border-color: #aad4f2; /* Blue border on focus */
+    outline: none; /* Remove the default outline */
+    box-shadow: 0 0 0 2px #9ad7f7; /* Add a blue focus ring */
   }
-  
+  /* Custom styling for the Add New Art dialog */
+.p-dialog {
+  max-width: 400px; /* Set a narrower width for the dialog */
+  margin: 0 auto; /* Center the dialog horizontally */
+}
+
+.p-dialog .p-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add spacing between input fields */
+}
+
+.p-dialog .p-dialog-header {
+  text-align: center; /* Center the header text */
+}
+
+.p-dialog .p-dialog-footer {
+  display: flex;
+  justify-content: center; /* Center the footer buttons */
+  gap: 10px; /* Add spacing between buttons */
+}
+/* Buttons container */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 15px; /* Add spacing between the buttons */
+}
   @media (max-width: 768px) {
     .art-card {
       flex: 1 1 calc(50% - 20px); /* 2 cards per row on small screens */
@@ -173,3 +203,5 @@ body {
       flex: 1 1 calc(100% - 20px); /* 1 card per row on very small screens */
     }
   }
+
+
