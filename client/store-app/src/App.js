@@ -27,7 +27,7 @@ import Nav from './components/nav'
 import './index.css';
 import './flags.css';        
 
-const LazyArt=React.lazy(()=>{import("./components/Art")})
+
 const LazyArts=React.lazy(()=>{import("./components/Arts")})
 const LazyManger=React.lazy(()=>{import("./components/Manger")})
 const LazyNav=React.lazy(()=>{import("./components/DigitalArt")})
@@ -42,7 +42,7 @@ function App() {
       <Link to={'/Art'}>artatat</Link> */}
    <Nav></Nav>
       <Routes>
-      <Route path='/' element={<Art></Art> } />
+      <Route path='/' element={<Arts></Arts> } />
       <Route path='/arts' element={<Arts></Arts> } />
       <Route path='/manger' element={<Manger></Manger> } />
       <Route path='/DigitalArt' element={<DigitalArt></DigitalArt> } />
