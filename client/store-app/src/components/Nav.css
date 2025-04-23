@@ -1,0 +1,31 @@
+/* גודל ברירת מחדל של המילים והאייקונים */
+.p-menubar .p-menuitem-text {
+    font-size: 1.2rem; /* גודל טקסט ברירת מחדל */
+    font-weight: bold; /* טקסט מודגש */
+  }
+  
+  .p-menubar .p-menuitem-icon {
+    font-size: 1.5rem; /* גודל אייקון ברירת מחדל */
+  }
+  
+  /* התאמה למסכים קטנים */
+  @media (max-width: 768px) {
+    .p-menubar .p-menuitem-text {
+      font-size: 1rem; /* הקטן את הטקסט במסכים קטנים */
+    }
+  
+    .p-menubar .p-menuitem-icon {
+      font-size: 1.2rem; /* הקטן את האייקונים במסכים קטנים */
+    }
+  }
+  
+  /* התאמה למסכים גדולים */
+  @media (min-width: 1200px) {
+    .p-menubar .p-menuitem-text {
+      font-size: 1.5rem; /* הגדל את הטקסט במסכים גדולים */
+    }
+  
+    .p-menubar .p-menuitem-icon {
+      font-size: 1.8rem; /* הגדל את האייקונים במסכים גדולים */
+    }
+  }

@@ -1,4 +1,5 @@
 import { Menubar } from 'primereact/menubar';
+import './Nav.css';
 import { useNavigate } from "react-router-dom";
 const Nav = () => {
    
