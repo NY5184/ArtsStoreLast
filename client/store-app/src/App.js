@@ -4,7 +4,7 @@ import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'primeicons/primeicons.css';
-import Art  from './components/Art'
+
 import Arts from './components/Arts'
 import Manger from './components/Manger'
 import DigitalArt from './components/DigitalArt'
