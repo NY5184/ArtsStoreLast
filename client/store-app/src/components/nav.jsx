@@ -23,10 +23,35 @@ const Nav = () => {
         
         {
             label: 'DigitalArt',
-            icon: 'pi pi-shopping-cart',
+            icon: "pi pi-desktop",
             command: () => {
                 navigate('./DigitalArt')}
         },
+        {
+            label: 'AbstractArt',
+            icon: 'pi pi-palette',
+            command: () => {
+                navigate('./AbstractArt')}
+        },
+        {
+            label: 'Figurative',
+            icon: 'pi pi-user',
+            command: () => {
+                navigate('./Figurative')}
+        },
+        {
+            label: 'Fantasy',
+            icon: 'pi pi-star',
+            command: () => {
+                navigate('./Fantasy')}
+        },
+        {
+            label: "Nature",
+            icon: "pi pi-globe", // Represents nature art (leaf for nature)
+            command: () => {
+              navigate("./Nature");
+            },
+          },
         {
             label: 'Manger',
             icon: 'pi pi-shopping-cart',

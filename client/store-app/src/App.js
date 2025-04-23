@@ -8,6 +8,11 @@ import Art  from './components/Art'
 import Arts from './components/Arts'
 import Manger from './components/Manger'
 import DigitalArt from './components/DigitalArt'
+import Fantasy from './components/Fantasy'
+import Figurative from './components/Figurative'
+import Nature from './components/Nature'
+import AbstractArt from './components/AbstractArt'
+
 
 
 // import {BrowserRouter,Routes,Route} from'react-router-dom'
@@ -41,6 +46,10 @@ function App() {
       <Route path='/arts' element={<Arts></Arts> } />
       <Route path='/manger' element={<Manger></Manger> } />
       <Route path='/DigitalArt' element={<DigitalArt></DigitalArt> } />
+      <Route path='/Fantasy' element={<Fantasy></Fantasy> } />
+      <Route path='/Figurative' element={<Figurative></Figurative> } />
+      <Route path='/Nature' element={<Nature></Nature> } />
+      <Route path='/AbstractArt' element={<AbstractArt></AbstractArt> } />
     
 
       </Routes>
