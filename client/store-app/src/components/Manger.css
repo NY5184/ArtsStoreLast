@@ -199,7 +199,7 @@ body {
 }
 /* Custom styling for the Edit Art dialog */
 .p-dialog.edit-dialog {
-  background-color: #fff4e6; /* Light orange background */
+  background-color: #acd1d0; /* Light orange background */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for the dialog */
   max-width: 600px; /* Limit the maximum width */
@@ -236,7 +236,7 @@ body {
 .p-dialog.edit-dialog .field input {
   width: 100%; /* Make the input take the full width of the container */
   padding: 0.5rem; /* Add padding inside the input */
-  border: 1px solid #ccc; /* Add a light border */
+  border: 1px solid #baf0fd; /* Add a light border */
   border-radius: 5px; /* Rounded corners for the input */
   font-size: 1rem; /* Adjust font size for readability */
 }
@@ -264,56 +264,56 @@ body {
   border-color: #f57ed3;
 } */
 .p-button-warning {
-  background-color: #d8a2cb; /* Dark pink background */
-  border-color: #f2bce4; /* Dark pink border */
+  background-color: #65919c; /* Dark pink background */
+  border-color: #56737b; /* Dark pink border */
   color: white; /* White text */
 }
 
 .p-button-warning:hover {
-  background-color: #d8a2b7; /* Slightly lighter dark pink on hover */
-  border-color: #dd9eb5;
+  background-color: #537b7e; /* Slightly lighter dark pink on hover */
+  border-color: #56717b;
 }
 
 .p-button-warning:focus {
-  box-shadow: 0 0 0 3px rgba(148, 118, 130, 0.5); /* Dark pink focus ring */
+  box-shadow: 0 0 0 3px rgba(108, 123, 129, 0.5); /* Dark pink focus ring */
 }
 /* Styling for the Delete button */
 .p-button-danger {
-  background-color: #f17ea4; /* Dark pink background */
-  border-color: #f27ca4; /* Dark pink border */
+  background-color: #d994ab; /* Dark pink background */
+  border-color: #d38fa6; /* Dark pink border */
   color: white; /* White text */
   transition: all 0.3s ease; /* Smooth transition for hover and focus effects */
 }
 
 .p-button-danger:hover {
-  background-color: #eb3471; /* Lighter pink on hover */
-  border-color: #f06292; /* Lighter pink border on hover */
+  background-color: #d68fa6; /* Lighter pink on hover */
+  border-color: #b18594; /* Lighter pink border on hover */
   color: #fff; /* Ensure text remains white */
   transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
 
 .p-button-danger:focus {
-  background-color: #f03160; /* Keep the dark pink background */
-  border-color: #e91e63; /* Keep the dark pink border */
+  background-color: #f3678a; /* Keep the dark pink background */
+  border-color: #f476a0; /* Keep the dark pink border */
   outline: none; /* Remove default outline */
-  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.5); /* Add a pink focus ring */
+  box-shadow: 0 0 0 3px rgba(236, 115, 155, 0.5); /* Add a pink focus ring */
 }
 
 .p-button-danger:active {
-  background-color: #de388b; /* Slightly darker pink when pressed */
-  border-color: #d81b60;
+  background-color: #f27eb8; /* Slightly darker pink when pressed */
+  border-color: #e56594;
   box-shadow: none; /* Remove shadow when pressed */
 }
 a
 .p-dialog.edit-dialog .p-button-secondary {
-  background-color: #e6e4e5; /* Light gray background for the cancel button */
-  border-color: #edebec;
+  background-color: #acf7f8; /* Light gray background for the cancel button */
+  border-color: #bee8f3;
   color: #333;
 }
 
 .p-dialog.edit-dialog .p-button-secondary:hover {
-  background-color: #fcb1f0; /* Darker gray on hover */
-  border-color: #d6d6d6;
+  background-color: #4d6467; /* Darker gray on hover */
+  border-color: #bbecf8;
 }
 /* Buttons container */
 .flex {

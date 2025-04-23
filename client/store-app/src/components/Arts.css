@@ -71,6 +71,32 @@
  .art-price { font-size: 16px;
    font-weight: bold; 
    color: #060606; }
+   /* Styling for the shopping cart button */
+.p-button-rounded {
+  background-color: #6990b1; /* Light blue background */
+  border-color: #5a7890; /* Light blue border */
+  color: white; /* White icon color */
+  transition: all 0.3s ease; /* Smooth transition for hover and focus effects */
+}
+
+.p-button-rounded:hover {
+  background-color: #6c8295; /* Darker blue on hover */
+  border-color: #6d89a1;
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+.p-button-rounded:focus {
+  background-color: #647b8e; /* Keep the light blue background */
+  border-color: #7a98b0; /* Keep the light blue border */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.5); /* Add a blue focus ring */
+}
+
+.p-button-rounded:active {
+  background-color: #76a9e3; /* Darker blue when pressed */
+  border-color: #85b6ee;
+  box-shadow: none; /* Remove shadow when pressed */
+}
 
  @media (max-width: 80px) { 
   .art-card { flex: 1 1 calc(30% - 10px);  } }
