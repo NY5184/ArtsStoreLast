@@ -211,7 +211,7 @@ export default function DigitalArts() {
             className="art-image"
           />
         </div>
-        <Rating value={art.mean} readOnly />
+        <Rating value={art.mean} readOnly cancel={false}/>
         <div className="art-title">{art.title}</div>
         <div className="art-footer">
           <span className="art-price">${art.price}</span>
