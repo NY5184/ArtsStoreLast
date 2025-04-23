@@ -253,17 +253,58 @@ body {
   gap: 1rem; /* Add spacing between buttons */
 }
 
-.p-dialog.edit-dialog .p-button-warning {
-  background-color: #f77db4; /* Orange background for the update button */
+/* .p-dialog.edit-dialog .p-button-warning {
+  background-color: #f77db4; Orange background for the update button 
   border-color: #f9a6d2;
   color: white;
-}
+} */
 
-.p-dialog.edit-dialog .p-button-warning:hover {
-  background-color: #fb96e2; /* Lighter orange on hover */
+/* .p-dialog.edit-dialog .p-button-warning:hover {
+  background-color: #fb96e2;  Lighter orange on hover 
   border-color: #f57ed3;
+} */
+.p-button-warning {
+  background-color: #d8a2cb; /* Dark pink background */
+  border-color: #f2bce4; /* Dark pink border */
+  color: white; /* White text */
 }
 
+.p-button-warning:hover {
+  background-color: #d8a2b7; /* Slightly lighter dark pink on hover */
+  border-color: #dd9eb5;
+}
+
+.p-button-warning:focus {
+  box-shadow: 0 0 0 3px rgba(148, 118, 130, 0.5); /* Dark pink focus ring */
+}
+/* Styling for the Delete button */
+.p-button-danger {
+  background-color: #f17ea4; /* Dark pink background */
+  border-color: #f27ca4; /* Dark pink border */
+  color: white; /* White text */
+  transition: all 0.3s ease; /* Smooth transition for hover and focus effects */
+}
+
+.p-button-danger:hover {
+  background-color: #eb3471; /* Lighter pink on hover */
+  border-color: #f06292; /* Lighter pink border on hover */
+  color: #fff; /* Ensure text remains white */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.p-button-danger:focus {
+  background-color: #f03160; /* Keep the dark pink background */
+  border-color: #e91e63; /* Keep the dark pink border */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.5); /* Add a pink focus ring */
+}
+
+.p-button-danger:active {
+  background-color: #de388b; /* Slightly darker pink when pressed */
+  border-color: #d81b60;
+  box-shadow: none; /* Remove shadow when pressed */
+}
+a
 .p-dialog.edit-dialog .p-button-secondary {
   background-color: #e6e4e5; /* Light gray background for the cancel button */
   border-color: #edebec;
