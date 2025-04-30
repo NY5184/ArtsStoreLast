@@ -15,8 +15,8 @@ app.use("/user",require("./routes/usersRoute"))
 app.use("/art",require("./routes/artsRoute"))
 app.use("/orderItem",require("./routes/orderItemsRoute"))
 app.use("/order",require("./routes/ordersRoute"))
-
 app.use(express.static('public'))
+
 app.get("/",(req,res)=>{
     res.send("ein od milvado //home page")
 })

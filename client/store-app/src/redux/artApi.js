@@ -34,7 +34,13 @@ export const artApi = createApi({
       query: (id) => `/getAverAgeRate/${id}`, // Matches the backend route
     }),
    
-  
+  uploadImage: builder.mutation({
+      query: (formData) => ({
+        url: "/upload",
+        method: "POST",
+        body: formData,
+      }),
+    }),
     
   }),
 });
@@ -46,4 +52,5 @@ export const {
   useUpdateArtMutation,
   useDeleteArtMutation,
   useGetAverageRatingQuery,
+  useUploadImageMutation,
 } = artApi;

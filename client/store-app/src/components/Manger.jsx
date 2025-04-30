@@ -11,6 +11,7 @@ import {
   useCreateArtMutation,
   useUpdateArtMutation,
   useDeleteArtMutation,
+  useUploadImageMutation
 } from "../redux/artApi";
 
 const Manager =()=> {
@@ -22,6 +23,7 @@ const Manager =()=> {
   const [createArt] = useCreateArtMutation();
   const [updateArt] = useUpdateArtMutation();
   const [deleteArt] = useDeleteArtMutation();
+  const [uploadImage] = useUploadImageMutation(); // Assuming you have this mutation defined
   
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOptions, setSortOptions] = useState(null);
@@ -164,7 +166,7 @@ const Manager =()=> {
           <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
         </div>
       </Dialog> }
-{/* 
+{
       <Dialog header="Edit Art" visible={visibleEdit} onHide={() => setVisibleEdit(false)}>
   {currentArt && (
     <div className="p-fluid">
@@ -232,7 +234,7 @@ const Manager =()=> {
       />
     </div>
   )}
-</Dialog>  */}
+</Dialog>  }
 <Dialog
   header="Edit Art"
   visible={visibleEdit}

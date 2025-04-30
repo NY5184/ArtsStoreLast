@@ -1,5 +1,6 @@
 const Art=require("../models/Art")
-
+const path = require("path");
+const multer = require("multer");
 const getAllArts=async(req,res)=>{
 const arts=await Art.find().lean()
 if(!arts){
@@ -123,5 +124,37 @@ const getAverageRating=async(req,res)=>{
     return res.json(art.mean)
 }
 
-module.exports={getAllArts,getArtByID,updateRating,deleteArt,updateArt,createNewArt,getAverageRating}
+
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../public/images")); // Save files to public/images
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`); // Add timestamp to avoid duplicate names
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  // Allow only JPG files
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg") {
+    cb(null, true);
+  } else {
+    cb(new Error("Only JPG files are allowed"), false);
+  }
+};
+
+const upload = multer({ storage, fileFilter });
+
+const uploadImage = (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded or invalid file type" });
+  }
+  res.status(200).json({ message: "File uploaded successfully", filePath: `/images/${req.file.filename}` });
+};
+
+
+
+module.exports={getAllArts,getArtByID,updateRating,deleteArt,updateArt,createNewArt,getAverageRating,upload,uploadImage}
 
