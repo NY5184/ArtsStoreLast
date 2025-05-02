@@ -8,6 +8,7 @@ const artSchema=new mongoose.Schema({
     price: { type: Number, required: true },
     quantity: { type: Number, default: 1 },
     createdAt: { type: Date, default: Date.now },
+    imagePath: { type: String, required: true },
     ratingArray:[{userId:{
                         type:String
                     },

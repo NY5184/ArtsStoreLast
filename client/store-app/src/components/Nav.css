@@ -18,7 +18,18 @@
       font-size: 1.2rem; /* הקטן את האייקונים במסכים קטנים */
     }
   }
-  
+  /* Custom class for smaller labels */
+.menu-label-small .p-menuitem-label {
+  font-size: 2px; 
+  /* Adjust the font size as needed */
+  size: 8px; /* Adjust the font size as needed */
+}
+
+/* Ensure the icon size remains unchanged */
+.p-menuitem-icon {
+  font-size: 2.rem; /* Keep the icon size consistent */
+  size: 70px;
+}
   /* התאמה למסכים גדולים */
   @media (min-width: 1200px) {
     .p-menubar .p-menuitem-text {

@@ -51,18 +51,62 @@ const Manager =()=> {
   const [visibleEdit, setVisibleEdit] = useState(false);
   const [visibleDelete, setVisibleDelete] = useState(false);
 
-  const [newArt, setNewArt] = useState({ title: "", category: "", price: "", rating: 0 });
+  const [newArt, setNewArt] = useState({ title: "", category: "", price: "", rating: 0 ,artist:"",description:"" ,quantity:1,imagePath:"" });
   const [currentArt, setCurrentArt] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null); 
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]); // Update the selected file
+  };
 
-  const addArt = async () => {
-    if (!newArt.title || !newArt.category || !newArt.price||!newArt.artist||!newArt.description) {
-      alert("Please fill in all fields.");
+  
+  
+  
+  
+  const handleFileUpload = async () => {
+    if (!selectedFile) {
+      alert("Please select a file to upload.");
       return;
     }
-    await createArt(newArt);
-    refetch();
-    setVisibleAdd(false);
-    setNewArt({ title: "", category: "", price: "", rating: 0, artist:"",description:"" ,quentity:1});
+
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    try {
+      const response = await uploadImage(formData).unwrap();
+      alert(response.message);
+      setNewArt({ ...newArt, imagePath: response.filePath }); // Save the uploaded image path
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("Failed to upload file. Please try again.");
+    }
+  };
+  const addArt = async () => {
+    if (!newArt.title || !newArt.category || !newArt.price || !newArt.artist || !newArt.imagePath) {
+      alert("Please fill in all fields, including the image.");
+      return;
+    }
+  
+    // Append the selected file to FormData 
+  
+    try {
+      await createArt(newArt);// Send the FormData
+      refetch();
+      setVisibleAdd(false);
+      setNewArt({
+        title: "",
+        category: "",
+        price: "",
+        rating: 0,
+        artist: "",
+        description: "",
+        quantity: 1,
+        imagePath: "",
+      });
+      alert("Art created successfully!");
+    } catch (error) {
+      console.error("Error creating art:", error);
+      alert("Failed to create art. Please try again.");
+    }
   };
 
   const editArt = async () => {
@@ -83,8 +127,7 @@ const Manager =()=> {
       <div className="art-card-content">
         <div className="art-image-wrapper">
           <img
-            src={`/images/${art.title}.jpg`}
-            alt={art.title}
+           src={`http://localhost:7020/${art.imagePath}`} 
             className="art-image"
           />
         </div>
@@ -162,7 +205,14 @@ const Manager =()=> {
             <InputText placeholder="Artist" value={newArt.artist} onChange={(e) => setNewArt({ ...newArt, artist: e.target.value })} />
             <InputText placeholder="Description" value={newArt.description} onChange={(e) => setNewArt({ ...newArt, description: e.target.value })} />
             <InputText placeholder="Quantity" value={newArt.quantity} onChange={(e) => setNewArt({ ...newArt, quantity: e.target.value })} />
-
+            <input type="file" accept=".jpg" onChange={handleFileChange} />
+          <Button
+            label="Upload Image"
+            icon="pi pi-upload"
+            className="p-button-success mt-2"
+            onClick={handleFileUpload}
+          />
+          <InputText placeholder="imagePath" value={newArt.imagePath}  />
           <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
         </div>
       </Dialog> }
@@ -224,6 +274,13 @@ const Manager =()=> {
           id="createdAt"
           value={currentArt.createdAt}
           onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })}
+        />
+      </div>
+      <div className="field">
+        <label htmlFor="imagePath">Image Path</label>
+        <InputText
+          id="imagePath"
+          value={currentArt.imagePath}
         />
       </div>
       <Button

@@ -51,9 +51,8 @@ export default function Nature() {
           <span className="art-category">{art.category}</span>
         </div>
         <div className="art-image-wrapper">
-          <img
-            src={`/images/${art.title}.jpg`}
-            alt={art.title}
+        <img
+           src={`http://localhost:7020/${art.imagePath}`} 
             className="art-image"
           />
         </div>

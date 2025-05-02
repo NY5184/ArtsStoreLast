@@ -19,19 +19,24 @@ const getArtByID=async(req,res)=>{
 }
 
 const createNewArt=async(req,res)=>{
-const{title,description,category,artist,price,createdAt,quantity}=req.body
-if(!title||!description||!price||!category||!artist){
+const{title,description,category,artist,price,createdAt,quantity,imagePath}=req.body
+if(!title||!description||!price||!category||!artist||!imagePath){
     return res.status(400).json({message:"all fileds is required"})
 }
-      
-const newArt={title,description,category,artist,price,createdAt,quantity}
-const art=await Art.create(newArt)
-const arts=await Art.find()
-if(!art){
-    return res.status(400).json({message:"art didn't created"})
-}
 
-return res.json(arts)
+
+const newArt={title,description,category,artist,price,createdAt,quantity,imagePath,ratingArray:[],mean:0}
+
+try {
+    const art = await Art.create(newArt);
+    const arts = await Art.find();
+    return res.json(arts);
+  } catch (error) {
+    console.error("Error creating art:", error);
+    return res.status(500).json({ message: "Failed to create art" });
+  }
+
+
 }
 
 const updateArt=async (req,res)=>{
@@ -153,6 +158,7 @@ const uploadImage = (req, res) => {
   }
   res.status(200).json({ message: "File uploaded successfully", filePath: `/images/${req.file.filename}` });
 };
+
 
 
 

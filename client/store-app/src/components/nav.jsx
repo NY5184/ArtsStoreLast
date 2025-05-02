@@ -8,7 +8,7 @@ const Nav = () => {
     const items = [
     {
         icon:<img
-        src="/images/logo3.webp" alt="logo3" className="shop-logo3" // תמונה לפי title במקום name
+        src="/logo3.webp" alt="logo3" className="shop-logo3" // תמונה לפי title במקום name
         style={{ height: "80px", width: "80px" ,borderRadius: "40px"}}
     />
     },
@@ -16,6 +16,7 @@ const Nav = () => {
     {
             label: 'Arts',
             icon: 'pi pi-home',
+            className: 'menu-label-small', // Add a custom class
             command: () => {
                 navigate('./arts')
             }
@@ -25,30 +26,35 @@ const Nav = () => {
         {
             label: 'DigitalArt',
             icon: "pi pi-desktop",
+            className: 'menu-label-small', // Add a custom class
             command: () => {
                 navigate('./DigitalArt')}
         },
         {
             label: 'AbstractArt',
             icon: 'pi pi-palette',
+            className: 'menu-label-small', // Add a custom class
             command: () => {
                 navigate('./AbstractArt')}
         },
         {
             label: 'Figurative',
             icon: 'pi pi-user',
+            className: 'menu-label-small', // Add a custom class
             command: () => {
                 navigate('./Figurative')}
         },
         {
             label: 'Fantasy',
             icon: 'pi pi-star',
+            className: 'menu-label-small', // Add a custom class
             command: () => {
                 navigate('./Fantasy')}
         },
         {
             label: "Nature",
-            icon: "pi pi-globe", // Represents nature art (leaf for nature)
+            icon: "pi pi-globe", 
+            className: 'menu-label-small', // Add a custom class// Represents nature art (leaf for nature)
             command: () => {
               navigate("./Nature");
             },
@@ -56,6 +62,7 @@ const Nav = () => {
         {
             label: 'Manger',
             icon: 'pi pi-shopping-cart',
+            className: 'menu-label-small', // Add a custom class
             command: () => {
                 navigate('./manger')}
         },
