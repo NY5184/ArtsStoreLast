@@ -1,5 +1,6 @@
 const Art=require("../models/Art")
 const path = require("path");
+const fs = require("fs");
 const multer = require("multer");
 const getAllArts=async(req,res)=>{
 const arts=await Art.find().lean()
@@ -77,6 +78,16 @@ const deleteArt=async(req,res)=>{
     if (!art) {
         return res.status(400).json({ message: 'Art not found' })
         }
+        console.log("Art found:", art.imagePath);
+        const imagePath = path.join(__dirname, "../public", art.imagePath);
+        console.log("Trying to delete:", imagePath);
+
+        fs.unlink(imagePath, (err) => {
+            if (err) {
+                console.error("Error deleting image file:", err);
+                // You can choose to return an error here if needed
+            }
+        });
     const result = await art.deleteOne()
     const arts=await Art.find().lean()
     const reply=`Art '${result.title}' ID ${result._id} deleted`
