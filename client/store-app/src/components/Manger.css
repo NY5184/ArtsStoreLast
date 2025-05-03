@@ -294,14 +294,14 @@ body {
 
 .p-button-danger:focus {
   background-color: #f3678a; /* Keep the dark pink background */
-  border-color: #f476a0; /* Keep the dark pink border */
+  border-color: #ee92b1; /* Keep the dark pink border */
   outline: none; /* Remove default outline */
-  box-shadow: 0 0 0 3px rgba(236, 115, 155, 0.5); /* Add a pink focus ring */
+  box-shadow: 0 0 0 3px rgba(248, 246, 247, 0.5); /* Add a pink focus ring */
 }
 
 .p-button-danger:active {
   background-color: #f27eb8; /* Slightly darker pink when pressed */
-  border-color: #e56594;
+  border-color: #e193b0;
   box-shadow: none; /* Remove shadow when pressed */
 }
 a
