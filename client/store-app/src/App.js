@@ -12,6 +12,8 @@ import Fantasy from './components/Fantasy'
 import Figurative from './components/Figurative'
 import Nature from './components/Nature'
 import AbstractArt from './components/AbstractArt'
+import Chatbot from 'react-chatbot-kit';
+import ChatbotComponent  from './components/Chatbot';
 
 
 
@@ -35,7 +37,7 @@ function App() {
   return (
    <div>
 
-    
+
       {/* <Link to={'/Login'}>Login</Link> */}
 
 {/*    
@@ -50,10 +52,9 @@ function App() {
       <Route path='/Figurative' element={<Figurative></Figurative> } />
       <Route path='/Nature' element={<Nature></Nature> } />
       <Route path='/AbstractArt' element={<AbstractArt></AbstractArt> } />
-    
-
+      
       </Routes>
-
+      <ChatbotComponent></ChatbotComponent> 
 {/* <React.StrictMode>
 
     <PrimeReactProvider>

@@ -66,6 +66,8 @@ const Nav = () => {
             command: () => {
                 navigate('./manger')}
         },
+      
+        
     
         
     
