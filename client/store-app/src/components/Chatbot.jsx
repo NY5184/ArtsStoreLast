@@ -83,13 +83,18 @@ const ChatbotComponent = () => {
 
 // עיצוב כפתור הפתיחה של הצ'אט
 const buttonStyle = {
+  position: 'fixed',     // חשוב! מצמיד את הכפתור למסך
+  bottom: '20px',        // רווח מלמטה
+  left: '20px',          // רווח מצד שמאל
   padding: '10px 20px',
   backgroundColor: '#007BFF',
   color: 'white',
   border: 'none',
   borderRadius: '5px',
   cursor: 'pointer',
+  zIndex: 9999,          // חשוב! כדי שיהיה מעל אלמנטים אחרים
 };
+
 
 // עיצוב המיכל שמכיל את הצ'אט
 const chatbotContainerStyle = {
