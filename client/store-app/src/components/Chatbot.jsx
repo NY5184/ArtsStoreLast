@@ -50,7 +50,11 @@ const ChatbotComponent = () => {
         <div style={chatbotContainerStyle}>
           <div style={closeButtonStyle} onClick={closeChatbot}>X</div>
           <Chatbot
-            config={config}
+                config={{
+                  ...config,
+                  botAvatar: '/logo3.webp',  // הצגת תמונת פרופיל
+                }}
+                
             messageParser={MessageParser}
             actionProvider={ActionProvider}
           />
