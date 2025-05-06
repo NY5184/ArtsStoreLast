@@ -49,7 +49,7 @@ body {
     flex: 1 1 calc(20% - 20px); /* 5 cards per row on large screens */
     margin: 10px;
     box-sizing: border-box;
-    max-width: 300px;
+    max-width: 400px;
     background: #fcf4f4; /* Light gray background for the card */
     border: 1px solid #f7e2e2;
     border-radius: 8px;

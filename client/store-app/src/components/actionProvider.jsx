@@ -89,6 +89,48 @@ class ActionProvider {
     const msg = this.createChatBotMessage("I'm not sure how to answer that. Can you try rephrasing?");
     this.updateState(msg);
   };
-}
+  handleHelp = () => {
+    const msg = this.createChatBotMessage("How can I assist you today?");
+    this.updateState(msg);
+  };
+  handleThankYou = () => {
+    const msg = this.createChatBotMessage("You're welcome! If you have any more questions, feel free to ask.");
+    this.updateState(msg);
+  };
+  handleGoodbye = () => {
+    const msg = this.createChatBotMessage("Goodbye! Have a great day! 🌞");
+    this.updateState(msg);
+  };
+  handleContactInfo = () => {
+    const msg = this.createChatBotMessage("You can contact us at  ")
+  };
+  handleLocationInfo = () => {
+    const msg = this.createChatBotMessage("We are located at 123 Art Street, Art City.");
+    this.updateState(msg);
+  };
+  handleHoursInfo = () => {
+    const msg = this.createChatBotMessage("We are open from 9 AM to 6 PM, Monday to Saturday.");
+    this.updateState(msg);
+  };
+  handleFeedbackRequest = () => {
+    const msg = this.createChatBotMessage("We value your feedback! Please let us know how we can improve.");
+    this.updateState(msg);
+  };
+  handleSupportRequest = () => {
+    const msg = this.createChatBotMessage("If you need support, please contact our support team at  057688888.");
+};
+handleReturnPolicy= () => {
+    const msg = this.createChatBotMessage("Our return policy allows returns within 30 days of purchase. Please keep the receipt.");
+    this.updateState(msg);
+  };
+  handleShippingInfo = () => {
+    const msg = this.createChatBotMessage("We offer free shipping on orders over $100. Standard shipping takes 5-7 business days.");
+    this.updateState(msg);
+  };
+ 
+  };
+ 
+
+
 
 export default ActionProvider;

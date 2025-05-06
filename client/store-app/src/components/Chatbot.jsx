@@ -87,7 +87,7 @@ const buttonStyle = {
   bottom: '20px',        // רווח מלמטה
   left: '20px',          // רווח מצד שמאל
   padding: '10px 20px',
-  backgroundColor: '#007BFF',
+  backgroundColor: '#6baac1',
   color: 'white',
   border: 'none',
   borderRadius: '5px',
@@ -117,7 +117,7 @@ const closeButtonStyle = {
   right: '10px',
   fontSize: '20px',
   cursor: 'pointer',
-  color: '#007BFF',
+  color: '#6baac1',
   zIndex: 10000,  // ודא שה-Z-index גבוה כדי שהכפתור יהיה מעל כל רכיב אחר
 };
 
@@ -126,13 +126,15 @@ const chatContainerStyle = {
   overflowY: 'auto',
   height: '400px',
   marginBottom: '10px',
+  
 };
 
 // עיצוב להודעות הצ'אט
 const messageStyle = {
   padding: '10px',
   marginBottom: '10px',
-  backgroundColor: '#f1f1f1',
+  backgroundColor: '#6baac1',
+  color:'#6baac1',
   borderRadius: '5px',
   maxWidth: '80%',
 };
@@ -141,6 +143,7 @@ const messageStyle = {
 const inputContainerStyle = {
   marginTop: '10px',
   display: 'flex',
+  color:'#6baac1',
   flexDirection: 'row',
   alignItems: 'center',
 };
@@ -155,9 +158,10 @@ const inputStyle = {
 };
 
 // עיצוב לכפתור השליחה
+// עיצוב לכפתור השליחה
 const sendButtonStyle = {
-  backgroundColor: '#28a745',
-  color: 'white',
+  backgroundColor: '#6baac1', // Background color for the button
+  color: 'white',            // Text color for the button
   border: 'none',
   padding: '10px 15px',
   borderRadius: '4px',
