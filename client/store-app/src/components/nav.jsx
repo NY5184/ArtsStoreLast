@@ -2,10 +2,12 @@ import { Menubar } from 'primereact/menubar';
 import './Nav.css';
 import { useNavigate } from "react-router-dom";
 import ChatbotComponent from './Chatbot';
+import { useSelector } from 'react-redux';
 const Nav = () => {
    
     const navigate = useNavigate();
-
+    const user = useSelector((state) => state.user.user);
+    const token = useSelector((state) => state.user.token);
     const items = [
     {
         command: () => {
@@ -63,13 +65,7 @@ const Nav = () => {
               navigate("./Nature");
             },
           },
-        {
-            label: 'Manger',
-            icon: 'pi pi-shopping-cart',
-            className: 'menu-label-small', // Add a custom class
-            command: () => {
-                navigate('./manger')}
-        },
+      
         {
             label: 'Cart',
             icon: 'pi pi-shopping-cart',
@@ -83,10 +79,37 @@ const Nav = () => {
     
         
     ]
+    const managerItems = [
+        {
+            command: () => {
+                navigate('./profile')
+            },
+            icon:<img
+            src="/logo3.webp" alt="logo3" className="shop-logo3" // תמונה לפי title במקום name
+            style={{ height: "80px", width: "80px" ,borderRadius: "40px"}}
+        />
+        },
+        
+        
+            {
+                label: 'Manger',
+                icon: 'pi pi-shopping-cart',
+                className: 'menu-label-small', // Add a custom class
+                command: () => {
+                    navigate('./manger')}
+            },
+           
+            
+        
+            
+        
+            
+        ]
 
     return (
     <div>
-        <Menubar model={items} />
+        {user.role==="admin"?<Menubar model={managerItems}/>: <Menubar model={items} />}
+       
     </div>)
 
 }

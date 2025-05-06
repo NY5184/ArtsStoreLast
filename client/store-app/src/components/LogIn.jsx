@@ -8,10 +8,10 @@ import "./styles.css";
 import axios from 'axios'
 import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser,setToken  } from '../redux/userDetails';
+import { setUser, setToken } from '../redux/userDetails';
 
-const LogIN = (visit) => {  
-  const dispatch = useDispatch(); 
+const LogIN = (visit) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const {
     register,
@@ -23,22 +23,26 @@ const LogIN = (visit) => {
   const onSubmit = async (data) => {
     try {
 
-debugger
+      debugger
       const userDetails = {
 
         password: data.Password,
         username: data.UserName
       }
       const LogInRes = await axios.post('http://localhost:7020/auth/login', userDetails)
-console.log("LogInRes",LogInRes)
+      console.log("LogInRes", LogInRes)
       if (LogInRes.status === 200) {
 
         dispatch(setUser(LogInRes.data.user))
         dispatch(setToken(LogInRes.data.accessToken))
         // localStorage.setItem("currentUserToken", LogInRes.data.accessToken)
         // localStorage.setItem("currentUserToken", LogInRes.data.accessToken)
-        console.log("aert",LogInRes.data)
-       navigate ('/arts')
+        console.log("aert", LogInRes.data)
+        if (user.role === "admin") { navigate('/manager') }
+        else {
+          navigate("/arts")
+        }
+        
       }
 
     }
@@ -57,7 +61,10 @@ console.log("LogInRes",LogInRes)
 
       <Dialog header="LogIn" visible={visible} modal={false} style={{ width: '50vw' }} onHide={() => {
         if (!visible) return; setVisible(false);
-        navigate("/")
+        if (user.role === "admin") {navigate("/manager")  }
+        else {
+          navigate("/")
+        }
       }}>
 
 
