@@ -8,6 +8,9 @@ const Nav = () => {
 
     const items = [
     {
+        command: () => {
+            navigate('./profile')
+        },
         icon:<img
         src="/logo3.webp" alt="logo3" className="shop-logo3" // תמונה לפי title במקום name
         style={{ height: "80px", width: "80px" ,borderRadius: "40px"}}
@@ -19,7 +22,7 @@ const Nav = () => {
             icon: 'pi pi-home',
             className: 'menu-label-small', // Add a custom class
             command: () => {
-                navigate('./arts')
+                navigate('./')
             }
         },
        
@@ -67,7 +70,13 @@ const Nav = () => {
             command: () => {
                 navigate('./manger')}
         },
-      
+        {
+            label: 'Cart',
+            icon: 'pi pi-shopping-cart',
+            className: 'menu-label-small', // Add a custom class
+            command: () => {
+                navigate('./CartPage')}
+        },
         
     
         

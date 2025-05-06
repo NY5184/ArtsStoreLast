@@ -129,7 +129,7 @@ export default function DigitalArts() {
 
   // Filter and sort the artworks
   const filteredArts = arts
-    .filter((art) => art.category === "Abstractg Art") // Only include Digital Art
+    .filter((art) => art.category === "Abstract Art") // Only include Digital Art
     .filter((art) =>
       art.title.toLowerCase().includes(searchTerm.toLowerCase())
     ); 

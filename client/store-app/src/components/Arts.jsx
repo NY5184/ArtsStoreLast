@@ -160,13 +160,16 @@ import { Rating } from "primereact/rating";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { useGetArtsQuery } from "../redux/artApi";
+import AddToCart from "./addToCart";
+import { useNavigate } from "react-router";
 
 
 export default function Arts() {
   // Fetch all arts data
   const { data: arts = [], refetch } = useGetArtsQuery(undefined, {
-    refetchOnMountOrArgChange: false,
+    refetchOnMountOrArgChange: true,
   });
+  const navigate=useNavigate()
 
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOptions, setSortOptions] = useState(null);
@@ -201,21 +204,21 @@ export default function Arts() {
           <i className="pi pi-tag"></i>
           <span className="art-category">{art.category}</span>
         </div>
+        <Button  className="pure-button" onClick={ ()=>{
+         navigate('/art', { state: art })}}> 
         <div className="art-image-wrapper">
+        
         <img
            src={`http://localhost:7020/${art.imagePath}`} 
             className="art-image"
-          />
-        </div>
+          /> 
+          
+        </div></Button>
         <Rating value={art.mean} readOnly cancel={false}/>
         <div className="art-title">{art.title}</div>
         <div className="art-footer">
           <span className="art-price">${art.price}</span>
-          <Button
-            icon="pi pi-shopping-cart"
-            className="p-button-rounded"
-            disabled={art.inventoryStatus === "OUTOFSTOCK"}
-          />
+          <AddToCart art={art} />
         </div>
       </div>
     </div>

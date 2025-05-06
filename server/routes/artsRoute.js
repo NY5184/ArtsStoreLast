@@ -4,15 +4,15 @@ const router=express.Router()
 const artController=require("../controllers/artController")
 const isManager=require("../middleware/isManager")
 const verifyJWT=require("../middleware/verifyJWT")
-const createNewOrder=require("../controllers/orderController")
+
 router.get("/",artController.getAllArts)
 router.get("/:id",artController.getArtByID)
-router.post("/",artController.createNewArt)
-router.put("/:id",artController.updateArt)
-router.delete("/:id",artController.deleteArt)
-router.put("/updateRate",artController.updateRating)
+router.post("/",isManager,artController.createNewArt)
+router.put("/update/:id",isManager,artController.updateArt)
+router.delete("/:id",isManager,artController.deleteArt)
+router.put("/updateRate",verifyJWT,artController.updateRating)
 router.get("/getAverAgeRate/:id",artController.getAverageRating)
-router.post("/upload", artController.upload.single("image"), artController.uploadImage);
+router.post("/upload",isManager, artController.upload.single("image"), artController.uploadImage);
 
 
 module.exports=router

@@ -1,0 +1,227 @@
+
+  
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+ 
+  }
+  
+  h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+  }
+  
+  .form {
+    background: #0e101c;
+    max-width: 400px;
+    margin: 0 auto;
+    border: #bf1650;
+    border-style: initial;
+    border-width: 10px;
+  }
+  
+  p {
+    color: #bf1650;
+  }
+  
+  p::before {
+    display: inline;
+    content: "⚠ ";
+  }
+  
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgb(15, 15, 15);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    margin-bottom: 13px;
+    margin-top: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 200;
+  }
+  
+  button[type="submit"],
+  input[type="submit"] {
+    background: #ec5990;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+  }
+  
+  button[type="submit"]:hover,
+  input[type="submit"]:hover {
+    background: #bf1650;
+  }
+  
+  button[type="submit"]:active,
+  input[type="button"]:active,
+  input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+  
+  input:disabled {
+    opacity: 0.4;
+  }
+  
+  input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+  
+  button[type="submit"],
+  input[type="button"],
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+  
+ 
+  button[type="button"] {
+    display: block;
+    appearance: none;
+    background: #333;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  
+  hr {
+    margin-top: 30px;
+  }
+  
+  button {
+    display: block;
+    appearance: none;
+    margin-top: 40px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  .div{
+   
+    width: '200px';
+ 
+    background-color: 'red';
+    box-shadow: '0 0 10px rgba(0, 0, 0, 0.1)';
+    padding: '20px';
+    border-radius: '8px'
+}
+.half-screen {
+  width: 50%;
+  margin-left: 0; /* Center the div horizontally */
+  overflow: hidden; /* Prevent overflow */
+}
+.small-item {
+  padding: 0.5rem; /* Reduce padding */
+  font-size: 0.875rem; /* Smaller font size */
+  max-width: 80%; 
+  max-height: 60%;/* Limit item width */
+  margin: 0 auto; /* Center item content */
+}
+.payment-container {
+  position: fixed; /* Fixed position */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  text-align: center; /* Center the button horizontally */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .payment-container {
+      top: 10px; /* Reduce the distance from the top on smaller screens */
+      right: 10px; /* Reduce the distance from the right on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-container {
+      right: 5px; /* Adjust further for smaller devices */
+  }
+}
+
+
+
+
+.rating-container {
+  margin-bottom: 20px; /* Space between rating and add to cart button */
+}
+
+.add-to-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p-button {
+  margin-top: 10px; /* Add margin to the button for spacing */
+}
+
+@media (max-width: 768px) {
+  .art-container {
+      padding: 10px; /* Reduced padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .art-image {
+      max-height: 300px; /* Limit image height for smaller screens */
+  }
+}
+.profile-dialog .p-dialog-header {
+  background-color: #007ad9;
+  color: white;
+}
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+.profile-image {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+.profile-email {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+.profile-actions {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  gap: 1rem;
+}

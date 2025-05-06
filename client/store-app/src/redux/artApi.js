@@ -2,7 +2,16 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const artApi = createApi({
   reducerPath: "artApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:7020/art" }),
+  baseQuery: fetchBaseQuery({ 
+    baseUrl: "http://localhost:7020/art" ,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().user.token;
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getArts: builder.query({
       query: () => "/",
@@ -19,7 +28,7 @@ export const artApi = createApi({
     }),
     updateArt: builder.mutation({
       query: ({ _id, ...rest }) => ({
-        url: `/${_id}`,
+        url: `update/${_id}`,
         method: "PUT",
         body: rest,
       }),
@@ -33,15 +42,23 @@ export const artApi = createApi({
     getAverageRating: builder.query({
       query: (id) => `/getAverAgeRate/${id}`, // Matches the backend route
     }),
-   
-  uploadImage: builder.mutation({
+
+
+    uploadImage: builder.mutation({
       query: (formData) => ({
         url: "/upload",
         method: "POST",
         body: formData,
       }),
     }),
-    
+    updateRate:builder.mutation({
+      query:(rate) => ({
+        url: "/updateRate",
+        method: "PUT",
+        body: rate,
+      }),
+    })
+
   }),
 });
 
@@ -55,4 +72,5 @@ export const {
   useDeleteArtMutation,
   useGetAverageRatingQuery,
   useUploadImageMutation,
+  useUpdateRateMutation,
 } = artApi;
