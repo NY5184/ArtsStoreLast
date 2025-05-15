@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { artApi } from "./artApi";
 import userReducer from './userDetails';
-import { orderApi } from "./orderGptapi";
+import { orderApi } from "./orderApi";
 const store = configureStore({
   reducer: {
     [artApi.reducerPath]: artApi.reducer, // Adding RTK Query reducer

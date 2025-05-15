@@ -3,82 +3,65 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Image } from 'primereact/image';
 import { Rating } from "primereact/rating";
-import axios from "axios";
-import { useSelector ,useDispatch} from 'react-redux';
-import {artApi, useUpdateArtMutation,useUpdateRateMutation} from '../redux/artApi';
+import { useSelector } from 'react-redux';
+import { useUpdateArtMutation, useUpdateRateMutation } from '../redux/artApi';
 import AddToCart from "./addToCart";
+import './styles.css'; // Ensure your styles are imported
 
 const Art = () => {
   const user = useSelector((state) => state.user.user);
-  console.log("user:",user)
-  const token = useSelector((state) => state.user.token);
   const location = useLocation();
   const [value, setValue] = useState(0);
-  const art = location.state || {};
-  const [updateArt] = useUpdateArtMutation();
-  const[updateArtRating]=useUpdateRateMutation()
+  const {art,order} = location.state || {};
+  const [updateArtRating] = useUpdateRateMutation();
 
   useEffect(() => {
-    debugger
-    console.log(user)
-    const userRate = art.ratingArray.find((rate) => rate._id === user._id);
+    const userRate = art.ratingArray.find((rate) => rate.userId === user._id);
     if (userRate) {
       setValue(userRate.rate);
-     console.log("Setting value to:",value); }
-  }, []);
+    }
+  }, [art, user]);
 
-
-  
   const updateRate = async (e) => {
     try {
       debugger
-      const rate={_id: art._id, rate: e.value}
-      console.log(e.value)
-      const resRates = await updateArtRating(rate)
-      console.log(resRates.data); 
-      // const updatedParameters = { ...art, ratingArray: resRates.data };
-      // updateArt(updatedParameters);
-      
-      // dispatch(
-      //   artApi.util.updateQueryData('getArtById',art._id, (draft) => {
-          
-      //     draft.title = updatedParameters.ratingArray;
-       
-      //   })
-      // );
-
+      const rate = { _id: art._id, rate: e.value };
+      await updateArtRating(rate);
     } catch (error) {
-      console.error('Error updating rate:', error.response ? error.response.data : error.message);
-      // You can add more error handling logic here
+      console.error('Error updating rate:', error.message);
     }
   };
 
   const handleRatingChange = (e) => {
-    debugger
     setValue(e.value);
-    updateRate(e); // Call updateRate immediately after the user changes the rating
+    updateRate(e);
   };
 
   return (
-    <div>
-      <img
-           src={`http://localhost:7020/${art.imagePath}`} 
-           
-          />
-      <Rating value={art.mean} readOnly />
-      {user ? (
-        <div><Rating
-          value={value}
-          onChange={handleRatingChange}
-          cancel={false}
-        />
-        <AddToCart art={art}></AddToCart></div>
-      ) : (
-        <>
-        {user}</>
-        
-      )}
-      
+    <div className="art-details-container">
+      <div className="image-container2">
+        <img src={`http://localhost:7020/${art.imagePath}`} alt={art.title} className="art-image2" />
+      </div>
+      <div className="details-container">
+        <h2 className="art-title">{art.title}</h2>
+        <div className="rating-container">
+          <Rating value={art.mean} readOnly />
+        </div>
+        {user && (
+          <div className="user-rating-container">
+            <Rating
+              value={value}
+              onChange={handleRatingChange}
+              cancel={false}
+              className="user-rating"
+            />
+          </div>
+        )}
+        <div className="art-description">{art.description}</div>
+        <div className="art-artist">Artist: {art.artist}</div>
+        <div className="art-price">Price: ${art.price}</div>
+        {user && <AddToCart art={art}user={user}order={order}/>}
+      </div>
     </div>
   );
 };

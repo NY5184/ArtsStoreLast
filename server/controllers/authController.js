@@ -39,6 +39,10 @@ const register=async(req,res)=>{
     if(duplicate){
         return res.status(400).json({message:"Duplicate username"})
     }
+    const duplicateEmail=await User.findOne({email:email})
+    if(duplicateEmail){
+        return res.status(400).json({message:"Duplicate email"})
+    }
     const hashedPwd=await bcrypt.hash(password,10)
     const userObject={name:name,email:email,username:username,password:hashedPwd}
     const user=await User.create(userObject)

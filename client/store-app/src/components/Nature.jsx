@@ -6,7 +6,10 @@ import { Rating } from "primereact/rating";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { useGetArtsQuery } from "../redux/artApi";
-
+import AddToCart from "./addToCart";
+import Manager from "./Manger";
+import { useSelector } from "react-redux";
+import { useGetOrderByUserIdQuery } from "../redux/orderApi";
 
 export default function Nature() {
   // Fetch all arts data
@@ -14,7 +17,11 @@ export default function Nature() {
   const { data: arts = [], refetch } = useGetArtsQuery(undefined, {
     refetchOnMountOrArgChange: false,
   });
+  const user = useSelector((state) => state.user.user);
 
+  const { data: order } = useGetOrderByUserIdQuery(undefined, {
+      refetchOnMountOrArgChange: true
+  });
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOptions, setSortOptions] = useState(null);
 
@@ -60,11 +67,7 @@ export default function Nature() {
         <div className="art-title">{art.title}</div>
         <div className="art-footer">
           <span className="art-price">${art.price}</span>
-          <Button
-            icon="pi pi-shopping-cart"
-            className="p-button-rounded"
-            disabled={art.inventoryStatus === "OUTOFSTOCK"}
-          />
+          <AddToCart art={art}user={user}order={order} />
         </div>
       </div>
     </div>
@@ -101,8 +104,13 @@ export default function Nature() {
   };
 
   return (
-    <div className="arts-container">
-      <DataView value={sortedArts} itemTemplate={gridItem} header={header()} />
-    </div>
+    <div>
+    {user.role==="admin"? <Manager/>:<div className="arts-container">
+    <DataView value={sortedArts} itemTemplate={gridItem} header={header()} /></div>
+    
+  }
+
+  </div>
+   
   );
 }

@@ -65,7 +65,6 @@ const updateArt=async (req,res)=>{
         art.createdAt=createdAt
     if(quantity)
         art.quantity=quantity
- 
 const updateArt=await art.save()
 
 const arts=await Art.find().lean()
@@ -95,45 +94,17 @@ res.json({reply:reply,arts:arts})
 
 }
 
-// const updateRating=async(req,res)=>{
-// const {_id,rate,userID}=req.body
-// if(!_id||!userID||rate<1||rate>5){
-//     return res.status(400).json({message:"insert correct details"})
-// }
-// const art=await Art.findById(_id)
-// let prevrate=0
-// console.log(art)
-// if(art.ratingArray){
-// art. ratingArray.map(n=>{
-//     if(n.userID===userID){
-//         prevrate=n.rate
-//     n.rate=rate}
-  
-// })}
-// if(prevrate!=0){
-//     art.mean=(art.mean*art.ratingArray.length-(prevrate-rate))/art.ratingArray.length
-//     await art.save()
-// }else{
-// const newRate={userID:userID,rate:rate}
 
-// art.mean=(art.mean*art.ratingArray.length+rate)/(art.ratingArray.length+1)
-// art.ratingArray=[...art.ratingArray,newRate]
-
-// await art.save()
-// }
-// const arts=await Art.find().lean()
-// return res.json(arts)
-
-// }
 const updateRating=async(req,res)=>{
     console.log("arrrived")
-    const {rate}=req.body
+    const {rate,_id}=req.body
     console.log("rate:",rate)
     if(!rate){
         console.log("not found")
         return res.status(400).json({message:"insert correct details"})
     }
     const userID=req.user._id
+    
     console.log(userID)
     if(!userID||rate<0||rate>5){
         console.log("not found")    
@@ -148,7 +119,7 @@ const updateRating=async(req,res)=>{
         art. ratingArray.map(lastRate=>{
             console.log("user: ",userID)
             console.log(lastRate)
-            if(lastRate.userID===userID){
+            if(lastRate.userId===userID){
                 console.log("found")
                 prevrate=lastRate.rate
                 lastRate.rate=rate}
@@ -163,12 +134,14 @@ const updateRating=async(req,res)=>{
         art.mean=(art.mean*art.ratingArray.length-(prevrate-rate))/art.ratingArray.length
         await art.save()
     }else{
-    const newRate={userID:userID,rate:rate}
+    const newRate={userId:userID,rate:rate}
     
     art.mean=(art.mean*art.ratingArray.length+rate)/(art.ratingArray.length+1)
     art.ratingArray=[...art.ratingArray,newRate]
-
+console.log("nnn",art)
+console.log("newrate",newRate)
     await art.save()
+    console.log("nnn",art)
     }
     
     return res.json({rates:art.ratingArray})

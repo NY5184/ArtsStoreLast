@@ -225,3 +225,176 @@
   width: 100%;
   gap: 1rem;
 }
+.cart-page {
+  display: flex;
+  justify-content: center; /* Center contents horizontally */
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px; /* Padding around the content */
+  width: 100%; /* Full width to maintain responsiveness */
+}
+
+.card {
+  width: 80%; /* Set width to 80% for responsiveness */
+  max-width: 800px; /* Max width for larger screens */
+  background-color: white;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Inner padding */
+}
+
+.order-list {
+  margin-left: 20px; /* Move order list more to the left */
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between; /* Space between image and details */
+  align-items: center; /* Center items vertically */
+  border-bottom: 1px solid #e0e0e0; /* Bottom border for items */
+  padding: 10px 0; /* Padding around items */
+}
+
+.payment-container {
+  margin-top: 20px; /* Space above the Pay Now button */
+  text-align: center; /* Center the button */
+  margin-bottom: 10px; /* Additional spacing below */
+}
+
+.total-price {
+  font-size: 1.2em; /* Increase font size for total price */
+  font-weight: bold; /* Make it bold */
+  margin: 20px 0; /* Margin for spacing */
+  text-align: left; /* Align to the left */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card {
+      width: 95%; /* Adjust width for smaller screens */
+  }
+  .order-list {
+      margin-left: 0; /* Remove left margin for small screens */
+  }
+}
+.art-details-container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.image-container2 {
+  flex: 1 1 300px; /* Allow the image container to grow but set a min width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.art-image2 {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-container {
+  flex: 1 1 400px; /* Allow details to grow but set a min width */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-rating-container {
+  margin-top: 10px; /* Space between ratings */
+}
+.cardCart {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.small-item {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    width: 100%; /* Full width for each item */
+    padding: 0.5rem; /* Small padding for each item */
+    border-bottom: 1px solid #e0e0e0; /* Optional: for visual separation */
+}
+
+.small-item img {
+    width: 100px; /* Set image size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image */
+    border-radius: 4px; /* Optional: round the image corners */
+}
+
+.text-xl {
+    font-size: 1.25rem; /* Adjust if needed */
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.p-button {
+    margin-right: 0.5rem; /* Space between buttons */
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.payment-container {
+    margin-top: 1rem;
+    text-align: center; /* Center payment button */
+}
+
+.half-screen {
+    max-width: 800px; /* Limit max width */
+    margin: 0 auto; /* Center the card */
+}
+
+.gridCart {
+    display: flex;
+    flex-direction: column; /* Stack list items vertically */
+}
+.total-price-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Center items vertically */
+  margin-top: 1rem; /* Space above the container */
+}
+
+.total-price-box {
+  padding: 1rem;
+  border: 2px solid #4CAF50; /* Clean green border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background color */
+  font-size: 1.5rem; /* Increase font size */
+  font-weight: bold; /* Bold text */
+  min-width: 150px; /* Minimum width for uniformity */
+  text-align: center; /* Center text */
+  margin-left: 0.5rem; /* Add a small space between the button and total price */
+}
+
+.payment-container {
+  /* Removed margin to make the button next to the total price */
+}
+
+.pay-button {
+  font-size: 1.5rem; /* Increase font size for the button */
+  padding: 0.75rem 1.5rem; /* Increase padding for a larger button */
+}

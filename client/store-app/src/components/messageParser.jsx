@@ -1,26 +1,3 @@
-// const MessageParser = ({ children, actions }) => {
-//   const parse = (message) => {
-//     const lower = message.toLowerCase();
-
-//     if (lower.includes("hello") || lower.includes("hi")) {
-//       actions.handleGreeting();
-//     } else if (lower.includes("name")) {
-//       actions.handleBotName();
-//     } else if (lower.includes("painting") || lower.includes("paintings")) {
-//       actions.handleShowPaintings();
-//     } else if (lower.includes("price")) {
-//       actions.handleShowPrices();
-//     } else if (lower.includes("buy") || lower.includes("purchase")) {
-//       actions.handleBuyInfo();
-//     } else {
-//       actions.handleUnknown();
-//     }
-//   };
-
-//   return children({ parse });
-// };
-
-// export default MessageParser;
 class MessageParser {
   constructor(actionProvider) {
     this.actionProvider = actionProvider;

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const orderApi = createApi({
   reducerPath: "orderApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:7020/orders", // Adjust base URL to match your backend
+    baseUrl: "http://localhost:7020/orders", 
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       if (token) {

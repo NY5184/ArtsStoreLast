@@ -7,7 +7,10 @@ import { Dialog } from 'primereact/dialog';
 import "./styles.css";
 import axios from 'axios'
 import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setToken, setUser } from "../redux/userDetails";
 const SigIn=(visit)=> {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -16,9 +19,9 @@ const SigIn=(visit)=> {
   } = useForm();
 
   const onSubmit = async(data) => {
+
     try{ 
      
-
         const newUser = {
             email: data.Email,
             name: data.Name,
@@ -29,8 +32,11 @@ const SigIn=(visit)=> {
   
     if (signInRes.status === 201) {
       
-        const LOgInRes = await axios.post('http://localhost:7020/auth/login',newUser)
-        localStorage.setItem("currentUserToken",LOgInRes.data.accessToken)
+      const LOgInRes = await axios.post('http://localhost:7020/auth/login',newUser)
+       console.log("currentUserToken",LOgInRes.data)
+       dispatch(setUser(LOgInRes.data.user))
+        dispatch(setToken(LOgInRes.data.accessToken))
+       alert("User added and logged in succesfully!")
         navigate('/arts')
     }
     }

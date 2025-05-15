@@ -13,8 +13,8 @@ app.use(cors(corsOptions))
 app.use("/auth",require("./routes/authRoutes"))
 app.use("/user",require("./routes/usersRoute"))
 app.use("/art",require("./routes/artsRoute"))
-app.use("/orderItem",require("./routes/orderItemsRoute"))
-app.use("/orders",require("./routes/orderGptRoute"))
+
+app.use("/orders",require("./routes/orderRoute"))
 app.use(express.static('public'))
 
 app.get("/",(req,res)=>{

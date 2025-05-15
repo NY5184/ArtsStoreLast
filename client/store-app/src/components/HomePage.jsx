@@ -1,2 +1,0 @@
-//bs"d
-const HomePage=()=>{ }

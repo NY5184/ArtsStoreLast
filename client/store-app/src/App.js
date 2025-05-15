@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'primeicons/primeicons.css';
 // import './styles.css'
@@ -14,7 +14,7 @@ import Figurative from './components/Figurative'
 import Nature from './components/Nature'
 import AbstractArt from './components/AbstractArt'
 import ChatbotComponent from './components/Chatbot';
-import CartPage from './components/CartPage'
+
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import 'primeflex/primeflex.css';
 import 'primereact/resources/primereact.css';
@@ -31,14 +31,21 @@ import Art from './components/Art';
 import Payment from './components/Payment';
 import Profile from './components/Profile';
 import { useSelector } from 'react-redux';
+import CartPage from './components/CartPage';
 
 
 const LazyArts = React.lazy(() => { import("./components/Arts") })
 const LazyManger = React.lazy(() => { import("./components/Manger") })
 const LazyNav = React.lazy(() => { import("./components/DigitalArt") })
 function App() {
+  
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
+  const [profileVisible, setProfileVisible] = useState(true);
+
+  const handleProfileHide = () => {
+      setProfileVisible(false); // Closes the dialog by updating the state
+  };
 
   return (
     <div>
@@ -46,24 +53,25 @@ function App() {
 
 
       <Nav></Nav>
-      <Button label="Login" onClick={() => { navigate('/login') }
-      } />
-      <Button label="SignIn" onClick={() => { navigate('/signIn') }} />
+      <div className="button-container">
+        <Button label="Login" onClick={() => { navigate('/login') }} />
+        <Button label="SignIn" onClick={() => { navigate('/signIn') }} />
+      </div>
       <Routes>
-        <Route path='/' element={<Arts></Arts>} />
+        <Route path='/' element={<Arts/>} />
         <Route path='/art' element={<Art />} />
-        <Route path='/arts' element={<Arts></Arts>} />
-        <Route path='/manger' element={<Manger></Manger>} />
-        <Route path='/DigitalArt' element={<DigitalArt></DigitalArt>} />
-        <Route path='/Fantasy' element={<Fantasy></Fantasy>} />
-        <Route path='/Figurative' element={<Figurative></Figurative>} />
+        <Route path='/arts' element={<Arts/>} />
+        <Route path='/manager' element={<Manger/>} />
+        <Route path='/DigitalArt' element={<DigitalArt/>} />
+        <Route path='/Fantasy' element={<Fantasy/>} />
+        <Route path='/Figurative' element={<Figurative/>} />
         <Route path='/Nature' element={<Nature></Nature>} />
-        <Route path='/AbstractArt' element={<AbstractArt></AbstractArt>} />
+        <Route path='/AbstractArt' element={<AbstractArt/>} />
         <Route path='/login' element={<LogIN props={true} />} />
         <Route path='/signIn' element={<SigIn props={true} />} />
         <Route path='CartPage' element={<CartPage />} />
         <Route path='payment' element={<Payment />} />
-        <Route path='profile' element={<Profile visible={true} />} />
+        <Route path='profile' element={<Profile  visible={true} onHide={handleProfileHide} />} />
       </Routes>
       <ChatbotComponent></ChatbotComponent>
 

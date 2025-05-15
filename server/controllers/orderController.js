@@ -1,110 +1,151 @@
-const Order=require("../models/Order")
-const OrderItem=require("../models/OrderItem")
-const Art=require("../models/Art")
-const createNewOrder = async (req, res) => {
-    const {arts} = req.body
-    const user=req.user._id
+//bs"d
+const Order = require('../models/Order');
+const Art = require('../models/Art');
 
-    if(!arts||!user){
-        return res.status(400).json({message:"all fileds is required"})
+const createOrder = async (req, res) => {
+    const { userId, items } = req.body; 
+    const oldOrder=await Order.find({user:userId,isPayed:false})
+    if(oldOrder.length>0){
+        console.log(oldOrder)
+        return res.status(400).json({ message: 'not payed order already exist ' })
     }
-    
-    const newOrder={user}
-    const order = await Order.create(newOrder)
-    if(!order){
-        return res.status(400).json({message:"order didn't created"})
-    }
-     const orderItemsId=[]
-    const artsForDelete=[]
+    try {
+   
+        const newOrder = new Order({
+            user: userId,
+            items
+        });
 
-     for (let index = 0; index < arts.length; index++) {
-        const a = arts[index];
-        const {quantity,art}=a
-        const quantityart=await Art.findById(art)
-        if(!quantityart)
-            {
-                return res.status(400).json({message:"art id is not good"})
+
+        const populatedOrder = await newOrder.populate('items.art');
+        
+        let totalPrice = 0;
+
+        for (let item of populatedOrder.items) {
+            if (!item.art) {
+                return res.status(404).json({ message: 'Art not found' });
             }
-        if(quantityart.quantity<quantity)
-            {
-                 return res.status(400).json({message:`there isn'enough from art${quantityart.title}`,title:quantityart.title})
-            }
-        if(quantityart.quantity>quantity)
-            {
-                quantityart.quantity=quantityart.quantity-quantity
-                const a=await quantityart.save()
-                if(!a)
-                    {
-                        return res.status(400).json({message:"error"})   
-                    }
-                    
-            }
-        else{
-            artsForDelete.push(quantityart)
-            
+            totalPrice += item.art.price * item.quantity;
         }
-        
-       
-             const newOrderItem={quantity,art,order:order._id}
-             const orderItem=await OrderItem.create(newOrderItem)
-            
-            if(orderItem){
-                orderItemsId.push(orderItem._id)
-            }   
-      
-        
+
+
+        newOrder.totalPrice = totalPrice;
+
+        await newOrder.save();
+        res.status(201).json(newOrder);
+    } catch (error) {
+        res.status(500).json({ message: 'Error creating order', error });
     }
+};
 
-        order.orderItems=orderItemsId
-        const updateOrder=await order.save()
-      
-        let totalPrice=0
+const addItemToOrder = async (req, res) => {
+ 
+    const { orderId, artId, quantity } = req.body;
 
-         await updateOrder.populate(
-            "orderItems"
-        ).then(async order=>{
-           
-           for (let index = 0; index < order.orderItems.length; index++) {
+    try {
+        const order = await Order.findById(orderId);
+        if (!order) {
+        
+            return res.status(404).json({ message: 'Order not found' });
+        }
+    
+        const art = await Art.findById(artId);
+        if (!art) {
+            return res.status(404).json({ message: 'Art not found' });
+        }
+
+        const existingItem = order.items.find(item => item.art.toString() === artId);
+
+        if (existingItem) {
+
+            if( existingItem.quantity + quantity<0)
+                return res.status(400).json({message:"You cant order less then 0 items"})
             
-            const orderItem = order.orderItems[index];
-            
-       
-                await  orderItem.populate("art", "price").then(b=>  {console.log("price",b.art.price); totalPrice+=b.art.price*orderItem.quantity   })
+            existingItem.quantity += quantity;
+            if( existingItem.quantity===0){
+                order.items.remove(existingItem)
             }
-        
-         
-        })        
-for (let index = 0; index < artsForDelete.length; index++) {
-    const result = await artsForDelete[index].deleteOne()
-    
-    
-}
-       
-      
-        updateOrder.totalPrice=totalPrice
-        const updatedOrder=await updateOrder.save()
-        const finelarts=await Art.find()
-          return res.json({updateOrder:updateOrder,arts:finelarts})
+            console.log("quantity", existingItem.quantity) 
+        } else {
+            order.items.push({ art: artId, quantity });
+        }
+
+ 
+        order.totalPrice += art.price * quantity;
+
+        await order.save();
+        res.json(order);
+    } catch (error) {
+        res.status(500).json({ message: 'Error adding item to order', error });
     }
-
-const getAllOrders=async(req,res)=>{
-
-    const orders=await Order.find().lean()
-if(!orders){
-    return res.status(400).json({message:"No orders"})
-}
-return res.json(orders)
-}
-
-const getOrderByID=async(req,res)=>{
-    const {id}=req.params
-    const order=await Order.findById(id)
-    if(!order){
-        return res.status(400).json({message:"order isn't found"})}
+};
+const getOrderByUserId = async (req, res) => {
+    console.log("gtbyusrdrid")
+    const user = req.user._id
+    console.log(user)
+    const notPayedOrder = await Order.findOne({user: user,isPayed:false})
+   
+    if(!notPayedOrder){
+       
+        return res.json(null)
+    }
     
-    res.json(order)
+    const populatedOrder = await notPayedOrder.populate('items.art');
+    console.log(populatedOrder)
+    return res.json(populatedOrder)
 }
 
 
-module.exports={createNewOrder,getAllOrders,getOrderByID}
+const payOrder = async (req, res) => {
+    const { orderId } = req.body;
+ console.log("order",orderId)
+    try {
+       
+        const order = await Order.findById(orderId);
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+       
+        // Check if already paid
+        if (order.isPayed) {
+            return res.status(400).json({ message: 'Order has already been paid' });
+        }
+        const outOffStock=[];
+        // Update each art's quantity in the database
+        for (let item of order.items) {
+            console.log("art:",item)
+            const art = await Art.findById(item.art);
+            if (art) {
+                if(art.quantity-item.quantity<0)
+                   { outOffStock.push(art)
+                    order.totalPrice-=item.quantity*art.price
+                    order.items.remove(item)
+                   }
+               
+                else{art.quantity -= item.quantity;
+                 // Decrease the quantity of art
+                await art.save();}
+            }
+        }
+    
+        // Mark the order as paid
+        order.isPayed = true;
+        console.log("isPayed:",order)
+        await order.save();
+        if(outOffStock.length>0){
+            return res.status(500).json({message:"outOffStock",arts:outOffStock,order:order})
+        }
 
+       return res.json(order);
+    } catch (error) {
+        console.log("isPayed:",error)
+       return res.status(500).json({ message: 'Error processing payment', error });
+    }
+};
+
+module.exports = {
+    createOrder,
+    addItemToOrder,
+    payOrder,
+    getOrderByUserId
+};

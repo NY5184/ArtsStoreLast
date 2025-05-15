@@ -13,12 +13,14 @@ import {
   useDeleteArtMutation,
   useUploadImageMutation
 } from "../redux/artApi";
-
+import Arts from "./Arts";
+import { useSelector } from "react-redux";
 const Manager =()=> {
   // Fetching arts data using RTK Query     
   const { data: arts = [], refetch } = useGetArtsQuery(undefined, {
     refetchOnMountOrArgChange: false,
   });
+  const user = useSelector((state) => state.user.user);
 
   const [createArt] = useCreateArtMutation();
   const [updateArt] = useUpdateArtMutation();
@@ -186,198 +188,200 @@ const Manager =()=> {
           </div>
         );
       };
-  return (
-    <div className="arts-container">
-      <Button
-        label="Add New Art"
-        icon="pi pi-plus"
-        className="p-button-success mb-3"
-        onClick={() => setVisibleAdd(true)}
-      />
+  return (<div>{user.role==="admin"?  <div className="arts-container">
 
-      <DataView value={sortedArts} itemTemplate={gridItem} header={header()}/>
+    <Button
+      label="Add New Art"
+      icon="pi pi-plus"
+      className="p-button-success mb-3"
+      onClick={() => setVisibleAdd(true)}
+    />
+
+    <DataView value={sortedArts} itemTemplate={gridItem} header={header()}/>
 {
-      <Dialog header="Add New Art" visible={visibleAdd} onHide={() => setVisibleAdd(false)}>
-        <div className="p-fluid">
-          <InputText placeholder="Art Title" value={newArt.title} onChange={(e) => setNewArt({ ...newArt, title: e.target.value })} />
-          <InputText placeholder="Category" value={newArt.category} onChange={(e) => setNewArt({ ...newArt, category: e.target.value })} />
-          <InputText placeholder="Price" value={newArt.price} onChange={(e) => setNewArt({ ...newArt, price: e.target.value })} />
-            <InputText placeholder="Artist" value={newArt.artist} onChange={(e) => setNewArt({ ...newArt, artist: e.target.value })} />
-            <InputText placeholder="Description" value={newArt.description} onChange={(e) => setNewArt({ ...newArt, description: e.target.value })} />
-            <InputText placeholder="Quantity" value={newArt.quantity} onChange={(e) => setNewArt({ ...newArt, quantity: e.target.value })} />
-            <input type="file" accept=".jpg" onChange={handleFileChange} />
-          <Button
-            label="Upload Image"
-            icon="pi pi-upload"
-            className="p-button-success mt-2"
-            onClick={handleFileUpload}
-          />
-          <InputText placeholder="imagePath" value={newArt.imagePath}  />
-          <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
-        </div>
-      </Dialog> }
+    <Dialog header="Add New Art" visible={visibleAdd} onHide={() => setVisibleAdd(false)}>
+      <div className="p-fluid">
+        <InputText placeholder="Art Title" value={newArt.title} onChange={(e) => setNewArt({ ...newArt, title: e.target.value })} />
+        <InputText placeholder="Category" value={newArt.category} onChange={(e) => setNewArt({ ...newArt, category: e.target.value })} />
+        <InputText placeholder="Price" value={newArt.price} onChange={(e) => setNewArt({ ...newArt, price: e.target.value })} />
+          <InputText placeholder="Artist" value={newArt.artist} onChange={(e) => setNewArt({ ...newArt, artist: e.target.value })} />
+          <InputText placeholder="Description" value={newArt.description} onChange={(e) => setNewArt({ ...newArt, description: e.target.value })} />
+          <InputText placeholder="Quantity" value={newArt.quantity} onChange={(e) => setNewArt({ ...newArt, quantity: e.target.value })} />
+          <input type="file" accept=".jpg" onChange={handleFileChange} />
+        <Button
+          label="Upload Image"
+          icon="pi pi-upload"
+          className="p-button-success mt-2"
+          onClick={handleFileUpload}
+        />
+        <InputText placeholder="imagePath" value={newArt.imagePath}  />
+        <Button label="Add" icon="pi pi-check" className="p-button-success mt-2" onClick={addArt} />
+      </div>
+    </Dialog> }
 {
-      <Dialog header="Edit Art" visible={visibleEdit} onHide={() => setVisibleEdit(false)}>
-  {currentArt && (
-    <div className="p-fluid">
-      <div className="field">
-        <label htmlFor="title">Title</label>
-        <InputText
-          id="title"
-          value={currentArt.title}
-          onChange={(e) => setCurrentArt({ ...currentArt, title: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="category">Category</label>
-        <InputText
-          id="category"
-          value={currentArt.category}
-          onChange={(e) => setCurrentArt({ ...currentArt, category: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="price">Price</label>
-        <InputText
-          id="price"
-          value={currentArt.price}
-          onChange={(e) => setCurrentArt({ ...currentArt, price: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="artist">Artist</label>
-        <InputText
-          id="artist"
-          value={currentArt.artist}
-          onChange={(e) => setCurrentArt({ ...currentArt, artist: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="description">Description</label>
-        <InputText
-          id="description"
-          value={currentArt.description}
-          onChange={(e) => setCurrentArt({ ...currentArt, description: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="quantity">Quantity</label>
-        <InputText
-          id="quantity"
-          value={currentArt.quantity}
-          onChange={(e) => setCurrentArt({ ...currentArt, quantity: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="createdAt">Created At</label>
-        <InputText
-          id="createdAt"
-          value={currentArt.createdAt}
-          onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="imagePath">Image Path</label>
-        <InputText
-          id="imagePath"
-          value={currentArt.imagePath}
-        />
-      </div>
+    <Dialog header="Edit Art" visible={visibleEdit} onHide={() => setVisibleEdit(false)}>
+{currentArt && (
+  <div className="p-fluid">
+    <div className="field">
+      <label htmlFor="title">Title</label>
+      <InputText
+        id="title"
+        value={currentArt.title}
+        onChange={(e) => setCurrentArt({ ...currentArt, title: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="category">Category</label>
+      <InputText
+        id="category"
+        value={currentArt.category}
+        onChange={(e) => setCurrentArt({ ...currentArt, category: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="price">Price</label>
+      <InputText
+        id="price"
+        value={currentArt.price}
+        onChange={(e) => setCurrentArt({ ...currentArt, price: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="artist">Artist</label>
+      <InputText
+        id="artist"
+        value={currentArt.artist}
+        onChange={(e) => setCurrentArt({ ...currentArt, artist: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="description">Description</label>
+      <InputText
+        id="description"
+        value={currentArt.description}
+        onChange={(e) => setCurrentArt({ ...currentArt, description: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="quantity">Quantity</label>
+      <InputText
+        id="quantity"
+        value={currentArt.quantity}
+        onChange={(e) => setCurrentArt({ ...currentArt, quantity: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="createdAt">Created At</label>
+      <InputText
+        id="createdAt"
+        value={currentArt.createdAt}
+        onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="imagePath">Image Path</label>
+      <InputText
+        id="imagePath"
+        value={currentArt.imagePath}
+      />
+    </div>
+    <Button
+      label="Update"
+      icon="pi pi-refresh"
+      className="p-button-warning mt-2"
+      onClick={editArt}
+    />
+  </div>
+)}
+</Dialog>  }
+<Dialog
+header="Edit Art"
+visible={visibleEdit}
+onHide={() => setVisibleEdit(false)}
+className="edit-dialog" // Add this class name
+>
+{currentArt && (
+  <div className="p-dialog-content">
+    <div className="field">
+      <label htmlFor="title">Title</label>
+      <InputText
+        id="title"
+        value={currentArt.title}
+        onChange={(e) => setCurrentArt({ ...currentArt, title: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="category">Category</label>
+      <InputText
+        id="category"
+        value={currentArt.category}
+        onChange={(e) => setCurrentArt({ ...currentArt, category: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="price">Price</label>
+      <InputText
+        id="price"
+        value={currentArt.price}
+        onChange={(e) => setCurrentArt({ ...currentArt, price: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="artist">Artist</label>
+      <InputText
+        id="artist"
+        value={currentArt.artist}
+        onChange={(e) => setCurrentArt({ ...currentArt, artist: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="description">Description</label>
+      <InputText
+        id="description"
+        value={currentArt.description}
+        onChange={(e) => setCurrentArt({ ...currentArt, description: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="quantity">Quantity</label>
+      <InputText
+        id="quantity"
+        value={currentArt.quantity}
+        onChange={(e) => setCurrentArt({ ...currentArt, quantity: e.target.value })}
+      />
+    </div>
+    <div className="field">
+      <label htmlFor="createdAt">Created At</label>
+      <InputText
+        id="createdAt"
+        value={currentArt.createdAt}
+        onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })}
+      />
+    </div>
+    <div className="dialog-footer">
       <Button
         label="Update"
         icon="pi pi-refresh"
-        className="p-button-warning mt-2"
+        className="p-button-warning"
         onClick={editArt}
       />
+      <Button
+        label="Cancel"
+        icon="pi pi-times"
+        className="p-button-secondary"
+        onClick={() => setVisibleEdit(false)}
+      />
     </div>
-  )}
-</Dialog>  }
-<Dialog
-  header="Edit Art"
-  visible={visibleEdit}
-  onHide={() => setVisibleEdit(false)}
-  className="edit-dialog" // Add this class name
->
-  {currentArt && (
-    <div className="p-dialog-content">
-      <div className="field">
-        <label htmlFor="title">Title</label>
-        <InputText
-          id="title"
-          value={currentArt.title}
-          onChange={(e) => setCurrentArt({ ...currentArt, title: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="category">Category</label>
-        <InputText
-          id="category"
-          value={currentArt.category}
-          onChange={(e) => setCurrentArt({ ...currentArt, category: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="price">Price</label>
-        <InputText
-          id="price"
-          value={currentArt.price}
-          onChange={(e) => setCurrentArt({ ...currentArt, price: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="artist">Artist</label>
-        <InputText
-          id="artist"
-          value={currentArt.artist}
-          onChange={(e) => setCurrentArt({ ...currentArt, artist: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="description">Description</label>
-        <InputText
-          id="description"
-          value={currentArt.description}
-          onChange={(e) => setCurrentArt({ ...currentArt, description: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="quantity">Quantity</label>
-        <InputText
-          id="quantity"
-          value={currentArt.quantity}
-          onChange={(e) => setCurrentArt({ ...currentArt, quantity: e.target.value })}
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="createdAt">Created At</label>
-        <InputText
-          id="createdAt"
-          value={currentArt.createdAt}
-          onChange={(e) => setCurrentArt({ ...currentArt, createdAt: e.target.value })}
-        />
-      </div>
-      <div className="dialog-footer">
-        <Button
-          label="Update"
-          icon="pi pi-refresh"
-          className="p-button-warning"
-          onClick={editArt}
-        />
-        <Button
-          label="Cancel"
-          icon="pi pi-times"
-          className="p-button-secondary"
-          onClick={() => setVisibleEdit(false)}
-        />
-      </div>
-    </div>
-  )}
+  </div>
+)}
 </Dialog>
 
-      <Dialog header="Delete Art" visible={visibleDelete} onHide={() => setVisibleDelete(false)}>
-        <p>Are you sure you want to delete "{currentArt?.title}"?</p>
-        <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={removeArt} />
-      </Dialog>
+    <Dialog header="Delete Art" visible={visibleDelete} onHide={() => setVisibleDelete(false)}>
+      <p>Are you sure you want to delete "{currentArt?.title}"?</p>
+      <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={removeArt} />
+    </Dialog>
+  </div>:<Arts/>}
+  
     </div>
   );
 

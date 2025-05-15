@@ -96,7 +96,7 @@ const Nav = () => {
                 icon: 'pi pi-shopping-cart',
                 className: 'menu-label-small', // Add a custom class
                 command: () => {
-                    navigate('./manger')}
+                    navigate('./manager')}
             },
            
             

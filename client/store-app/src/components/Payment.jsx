@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useForm } from 'react-hook-form';
 import '../PaymentForm.css'; // Make sure to create this CSS file
-import {usePayOrderMutation} from '../redux/orderGptapi';
+import {usePayOrderMutation} from '../redux/orderApi';
 import { useLocation, useNavigate } from 'react-router';
 const Payment = () => {
     const location = useLocation();
@@ -97,7 +97,7 @@ const Payment = () => {
                 {errors.identityNumber && <p className="error">{errors.identityNumber.message}</p>}
             </div>
 
-            <button type="submit" disabled={false} >Pay</button>
+            <button className="button" type="submit" disabled={false} >Pay</button>
         </form>
     );
 };

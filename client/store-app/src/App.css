@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+.button-container {
+  display: flex; /* Use flexbox layout */
+  gap: 10px; /* Optional: Space between buttons */
+  margin-top: 20px; /* Optional: Margin from the nav */
+}
